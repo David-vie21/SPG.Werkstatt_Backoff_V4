@@ -9,13 +9,13 @@ The solution file is in the SPG.Werkstatt_Backoff_V3 folder
     xunit
   
 2.
-  Change the Path from the Database (Werkstatt.db) in the dates:
+  Change the Path from the Database (Werkstatt.db) in the dates to you own path.
 
       SPG.Werkstatt_Backoff_V3.csproj
       MainWindow.xaml.cs
       UnitTest1.cs
       WerkstattContext.cs
-   to you own path.
+   all paths have to be the same
 
 3. Start the unit test => the database shoud be createt. 
 

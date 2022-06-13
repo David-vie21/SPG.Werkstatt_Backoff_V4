@@ -1,5 +1,5 @@
 To start the projekt:
-The solution file is in the SPG.Werkstatt_Backoff_V3 folder
+The solution file is in the SPG.Werkstatt_Backoff_V3 folder.
 
 1.
   Downlode the Nuget Packages: 
@@ -17,7 +17,7 @@ The solution file is in the SPG.Werkstatt_Backoff_V3 folder
       WerkstattContext.cs
    all paths have to be the same
 
-3. Start the unit test => the database shoud be createt. 
+3. Start the unit test => the database shoud be createt. Than rebuild the solution
 
 4. if you get an exception from the converter => 
   delet the "DesignTimeBuild" folder in   "...\SPG.Werkstatt_Backoff_V4\SPG.Werkstatt_Backoff_V3\.vs\SPG.Werkstatt_Backoff_V3\DesignTimeBuild"

@@ -3,9 +3,9 @@ The solution file is in the SPG.Werkstatt_Backoff_V3 folder
 
 1.
   Downlode the Nuget Packages: 
-    Microsoft.EntityFrameworkCore.Sqlite
-                                 .Tools
-    Bogus
+    Microsoft.EntityFrameworkCore.Sqlite,  
+    Microsoft.EntityFrameworkCore.Tools,  
+    Bogus,  
     xunit
   
 2.

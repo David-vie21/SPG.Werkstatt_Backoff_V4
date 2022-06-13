@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="I:/Visuel Studio Projekte/SPG.Werkstatt_Backoff_V4/Context_Test/bin/Debug/net6.0/Werkstatt.db" />
+      <!--<None Remove="I:/Visuel Studio Projekte/SPG.Werkstatt_Backoff_V4/Context_Test/bin/Debug/net6.0/Werkstatt.db" />-->
+	  <!--C:/Users/User/Desktop/SPG.Werkstatt_Backoff_V4/SPG.Werkstatt_Backoff_V4/Context_Test/bin/Debug/net6.0/Werkstatt.db-->
+
+
+  </ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\SPG.Werkstatt.Domian\SPG.Werkstatt.Domian.csproj" />
+		<!--<ProjectReference Include="..\Context_Test\Context_Test.csproj" />-->
+
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <!--<Resource Include="Werkstatt.db">-->
+		  	  <Resource Include="I:/Visuel Studio Projekte/SPG.Werkstatt_Backoff_V4/Context_Test/bin/Debug/net6.0/Werkstatt.db">
+
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	</ItemGroup>
+	
+	
+</Project>

@@ -14,14 +14,14 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
     {
         //List<Customer> Customers = new List<Customer>();
 
-        public List<Customer> Customers { get; set; } = new List<Customer>();
-        public HashSet<Customer> CustomersHS { get; set; } = new HashSet<Customer>();
+        public List<CustomerMongo> Customers { get; set; } = new List<CustomerMongo>();
+        public HashSet<CustomerMongo> CustomersHS { get; set; } = new HashSet<CustomerMongo>();
 
-        public List<Car> CarsFromKunde { get; set; } = new List<Car>();
-        public HashSet<Car> CarsFromKundeHS { get; set; } = new HashSet<Car>();
+        public List<CarMongo> CarsFromKunde { get; set; } = new List<CarMongo>();
+        public HashSet<CarMongo> CarsFromKundeHS { get; set; } = new HashSet<CarMongo>();
 
-        public Customer CurrentKunde { get; set; }
-        public Car CurrentCar { get; set; }
+        public CustomerMongo CurrentKunde { get; set; }
+        public CarMongo CurrentCar { get; set; }
         WerkstattContext _db;
 
         public NewT_ViewModel(WerkstattContext db)
@@ -37,7 +37,7 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
 
         
 
-        public HashSet<Car> getCarsFromKunde(Customer kunde)
+        public HashSet<CarMongo> getCarsFromKunde(CustomerMongo kunde)
         {
             CarsFromKunde.Clear();
             CarsFromKundeHS.Clear();
@@ -53,10 +53,10 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
             }
             return null;
         }
-        public Customer getKunde(int kundenID)
+        public CustomerMongo getKunde(int kundenID)
         {
 
-            Customer customer = (Customer)_db.Customers.Where(c => c.Id == kundenID);
+            CustomerMongo customer = (CustomerMongo)_db.Customers.Where(c => c.Id == kundenID);
             return customer;
 
         }

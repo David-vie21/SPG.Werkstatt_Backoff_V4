@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBI.MongoRepoGeneric;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace SPG.Werkstatt.Domian.Model
 {
-    public class Customer
+    [BsonCollection("Customer")]
+
+    public class CustomerMongo : Document
     {
         public int Id { get; set; }
         public Guid guid { get; set; }

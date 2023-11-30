@@ -14,5 +14,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\DBI.MongoRepoGeneric\DBI.MongoRepoGeneric.csproj" />
+		<!--<ProjectReference Include="..\Context_Test\Context_Test.csproj" />-->
+
+	</ItemGroup>
+
 
 </Project>

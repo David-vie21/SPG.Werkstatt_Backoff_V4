@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
 using SPG.Werkstatt.Domian.Model;
+using SPG.Werkstatt.Domian.MongoModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace SPG.Werkstatt.Domian
     public class WerkstattContext : DbContext
     {
         // 1. Entitäten 
-        public DbSet<Customer> Customers => Set<Customer>();
+        public DbSet<CustomerMongo> Customers => Set<CustomerMongo>();
 
-        public DbSet<Car> Cars => Set<Car>();
+        public DbSet<CarMongo> Cars => Set<CarMongo>();
         public DbSet<Termin> Termine => Set<Termin>();
 
 
@@ -44,7 +45,7 @@ namespace SPG.Werkstatt.Domian
         {
             Randomizer.Seed = new Random(1017);
 
-            List<Customer> customers = new Faker<Customer>("de")
+            List<CustomerMongo> customers = new Faker<CustomerMongo>("de")
                 .Rules((f, c) =>
                 {                      //public string Nachname { get; set; }
                                        //public string Addrese { get; set; }
@@ -65,7 +66,7 @@ namespace SPG.Werkstatt.Domian
             SaveChanges();
 
 
-            List<Car> cars = new Faker<Car>("de")
+            List<CarMongo> cars = new Faker<CarMongo>("de")
             .Rules((f, p) =>
             {
                 //public string Marke { get; set; }

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DBI.MongoRepoGeneric;
 using SPG.Werkstatt.Domian.Model;
 
 namespace SPG.Werkstatt.Domian.Model
 {
-    public class Car
+    [BsonCollection("Car")]
+
+    public class CarMongo : Document
     {
         public int Id { get; set; }
         public Guid guid { get; set; }

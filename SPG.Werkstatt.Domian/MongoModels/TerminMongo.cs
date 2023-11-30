@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DBI.MongoRepoGeneric;
+using SPG.Werkstatt.Domian.Model;
 
-namespace SPG.Werkstatt.Domian.Model
+namespace SPG.Werkstatt.Domian.MongoModels
 {
-    public class Termin
+    [BsonCollection("Termin")]
+    public class TerminMongo : Document
     {
-       
+
         public int Id { get; set; }
         public Guid guid { get; set; }
 
@@ -21,9 +24,9 @@ namespace SPG.Werkstatt.Domian.Model
         public bool accepted { get; set; }
         public bool IsDone { get; set; }
 
-        public Termin() { }
+        public TerminMongo() { }
 
-        public Termin( Guid guid, CustomerMongo kunde, DateTime datetime, CarMongo auto, string summery, bool accepted, bool isDone)
+        public TerminMongo(Guid guid, CustomerMongo kunde, DateTime datetime, CarMongo auto, string summery, bool accepted, bool isDone)
         {
             this.guid = guid;
             Kunde = kunde;
@@ -34,7 +37,7 @@ namespace SPG.Werkstatt.Domian.Model
             IsDone = isDone;
         }
 
-        public Termin(int id, Guid guid, CustomerMongo kunde, DateTime datetime, CarMongo auto, string summery, bool accepted, bool isDone)
+        public TerminMongo(int id, Guid guid, CustomerMongo kunde, DateTime datetime, CarMongo auto, string summery, bool accepted, bool isDone)
         {
             Id = id;
             this.guid = guid;

@@ -1,5 +1,6 @@
 ﻿using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
+using SPG.Werkstatt.Domian.MongoModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows.Update
     {
         private WerkstattContext _db;
         public Termin C_termin;
-        public Customer kunde;
+        public CustomerMongo kunde;
 
 
         public Up_Model(WerkstattContext db, Termin termin)

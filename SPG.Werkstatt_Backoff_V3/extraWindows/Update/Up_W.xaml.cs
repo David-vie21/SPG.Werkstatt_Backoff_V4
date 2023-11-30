@@ -1,5 +1,6 @@
 ﻿using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
+using SPG.Werkstatt.Domian.MongoModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,8 +62,8 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows.Update
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Car car = termin.Auto;
-            Customer kunde = termin.Kunde;
+            CarMongo car = termin.Auto;
+            CustomerMongo kunde = termin.Kunde;
            
 
 

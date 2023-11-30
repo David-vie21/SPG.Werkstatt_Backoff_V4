@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
-
+using SPG.Werkstatt.Domian.MongoModels;
 
 namespace SPG.Werkstatt_Backoff_V3.extraWindows
 {
@@ -22,7 +22,7 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
     /// </summary>
     public partial class NewTerminWindow : Window
     {
-        Customer selectedCustomerNA;
+        CustomerMongo selectedCustomerNA;
         WerkstattContext _db;
 
 
@@ -66,10 +66,10 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
 
         private void KundenListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedCustomerNA = KundenListe.SelectedItem as Customer;
+            selectedCustomerNA = KundenListe.SelectedItem as CustomerMongo;
             if (selectedCustomerNA != null)
                 Console.WriteLine(selectedCustomerNA.ToString());
-            Customer selectedCustomer = KundenListe.SelectedItem as Customer;
+            CustomerMongo selectedCustomer = KundenListe.SelectedItem as CustomerMongo;
 
             AutoListe.ItemsSource = null;
             AutoListe.Items.Refresh();
@@ -104,12 +104,12 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
         {
 
 
-            Customer kunde = getSetKunde();
+            CustomerMongo kunde = getSetKunde();
             int kundenId = kunde.Id;
 
             DateTime datum = t_Date.SelectedDate.Value;
 
-            Car? car = getSetCar(kunde);
+            CarMongo? car = getSetCar(kunde);
 
             string summ = BeschNT.Text;
             bool accep = true;
@@ -126,18 +126,18 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
 
         }
 
-        public Customer getSetKunde()
+        public CustomerMongo getSetKunde()
         {
             //KundenListe AutoListe       
 
             if (AutoListe.SelectedItem != null)
             {
-                Car car = (Car)AutoListe.SelectedItem;
+                CarMongo car = (CarMongo)AutoListe.SelectedItem;
                 return car.Besitzer;
             }
             else if (KundenListe.SelectedItem != null)
             {
-                Customer customer = (Customer)KundenListe.SelectedItem;
+                CustomerMongo customer = (CustomerMongo)KundenListe.SelectedItem;
                 return customer;
             }
             else
@@ -150,7 +150,7 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
 
                 //string vorname, string nachname, string addrese, string tel, string email, Guid guid
                 Guid guid = Guid.NewGuid();
-                Customer newCus = new Customer(vorname: VN, nachname: NN, addrese: ADD, tel: TELL, email: Mail, guid: guid);
+                CustomerMongo newCus = new Customer(vorname: VN, nachname: NN, addrese: ADD, tel: TELL, email: Mail, guid: guid);
 
                 //wird in DB geschrieben
                 _db.Customers.Add(newCus);
@@ -206,13 +206,13 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
 
         //}
 
-        public Car? getSetCar(Customer kunde)
+        public CarMongo? getSetCar(CustomerMongo kunde)
         {
             //AutoListe       
 
             if (AutoListe.SelectedItem != null)
             {
-                Car car = (Car)AutoListe.SelectedItem;
+                CarMongo car = (CarMongo)AutoListe.SelectedItem;
                 return car;
             }
             else
@@ -237,7 +237,7 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
 
                 //string marke, string kennzeichen, decimal kw, Customer besitzer2, string modell, DateTime erstzulassung
                 Guid g = Guid.NewGuid();
-                Car newCar = new Car(MA, Ke, KW, kunde, MO, Erst, g);
+                CarMongo newCar = new Car(MA, Ke, KW, kunde, MO, Erst, g);
                 _db.Cars.Add(newCar);
                 _db.SaveChanges();
 
@@ -332,10 +332,10 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
             else
             {
                 Guid guid = Guid.NewGuid();
-                Customer c = new Customer("test", "test", "test", "test", "test", guid);
+                CustomerMongo c = new Customer("test", "test", "test", "test", "test", guid);
                 if (KundenListe.SelectedItem != null)
                     c = selectedCustomerNA;
-                Car car = SetGetNEWCar(c);
+                CarMongo car = SetGetNEWCar(c);
                 SetNewTermin_ExsitsKunde_NewCar(car);
 
 
@@ -343,7 +343,7 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
 
         }
 
-        public Car SetGetNEWCar(Customer kunde)
+        public CarMongo SetGetNEWCar(CustomerMongo kunde)
         {
             //Neues Auto wird in DB geschriben
             string MA = Na_Ma.Text;
@@ -363,17 +363,17 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
 
             //wird in DB geschrieben
             Guid guid = Guid.NewGuid();
-            Car car = new Car(MA, Ke, KW, kunde, MO, Erst, guid);
+            CarMongo car = new Car(MA, Ke, KW, kunde, MO, Erst, guid);
             _db.Cars.Add(car);
             _db.SaveChanges();
             return car;
 
         }
 
-        public void SetNewTermin_ExsitsKunde_NewCar(Car car)
+        public void SetNewTermin_ExsitsKunde_NewCar(CarMongo car)
         {
 
-            Customer kunden = selectedCustomerNA;
+            CustomerMongo kunden = selectedCustomerNA;
 
             DateTime datum = t_Date.SelectedDate.Value;
             
@@ -393,11 +393,11 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
         public void newTermin_ExCAR_ExKunde()
         {
 
-            Customer kunde = selectedCustomerNA;
+            CustomerMongo kunde = selectedCustomerNA;
 
             DateTime datum = t_Date.SelectedDate.Value;
 
-            Car c1 = (Car)AutoListe.SelectedItem;
+            CarMongo c1 = (CarMongo)AutoListe.SelectedItem;
 
             string summ = BeschNT.Text;
             bool accep = true;
@@ -420,7 +420,7 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
             if (String.IsNullOrEmpty(TxtFilter.Text))
                 return true;
             else
-                return ((item as Customer).Name.IndexOf(TxtFilter.Text, StringComparison.CurrentCultureIgnoreCase) >= 0);
+                return ((item as CustomerMongo).Name.IndexOf(TxtFilter.Text, StringComparison.CurrentCultureIgnoreCase) >= 0);
         }
     }
 

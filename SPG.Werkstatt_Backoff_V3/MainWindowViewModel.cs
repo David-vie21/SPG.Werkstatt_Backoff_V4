@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
-
+using SPG.Werkstatt.Domian.MongoModels;
 
 namespace SPG.Werkstatt_Backoff_V3
 {
@@ -16,7 +16,7 @@ namespace SPG.Werkstatt_Backoff_V3
         public List<Termin> TermineTD = new List<Termin>();  //TermineTD
         public HashSet<Termin> TerminsHS { get; } = new HashSet<Termin>();
         public HashSet<DateTime> DatesHS { get; } = new HashSet<DateTime>();
-        public List<Customer> KundenListe { get; set; } = new List<Customer>();
+        public List<CustomerMongo> KundenListe { get; set; } = new List<CustomerMongo>();
 
 
         private Termin _currentTermin;
@@ -24,7 +24,7 @@ namespace SPG.Werkstatt_Backoff_V3
 
         private DateTime _selectedDate;
         public DateTime SelectedDate { get { return _selectedDate; } set { _selectedDate = value; } }
-        public Customer CurrentCustomer { get; set; }
+        public CustomerMongo CurrentCustomer { get; set; }
 
 
         public MainWindowViewModel(WerkstattContext db)

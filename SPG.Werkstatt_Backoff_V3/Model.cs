@@ -8,6 +8,7 @@ using SPG.Werkstatt.Domian;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.Windows.Input;
+using SPG.Werkstatt.Domian.MongoModels;
 
 namespace SPG.Werkstatt_Backoff_V3
 {
@@ -15,7 +16,7 @@ namespace SPG.Werkstatt_Backoff_V3
     { 
 
         public List<Termin> TermineDB { get; } = new List<Termin>();
-        public List<Customer> KundeListeDB { get; set; } = new List<Customer>();
+        public List<CustomerMongo> KundeListeDB { get; set; } = new List<CustomerMongo>();
 
         private  WerkstattContext _db;
 
@@ -43,15 +44,15 @@ namespace SPG.Werkstatt_Backoff_V3
         }
 
 
-        public Customer getKunde(int kundenID)
+        public CustomerMongo getKunde(int kundenID)
         {
-            Customer newKunde = (Customer)_db.Customers.Where(c => c.Id == kundenID);
+            CustomerMongo newKunde = (CustomerMongo)_db.Customers.Where(c => c.Id == kundenID);
             return newKunde;
         }
 
-        public Car getAuto(int carId)
+        public CarMongo getAuto(int carId)
         {
-            Car newCar = (Car)_db.Cars.Where(c => c.Id == carId);
+            CarMongo newCar = (CarMongo)_db.Cars.Where(c => c.Id == carId);
             return newCar;
         }
 

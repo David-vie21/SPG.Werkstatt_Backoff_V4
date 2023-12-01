@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using SPG.Werkstatt.Domian.Model;
@@ -14,15 +15,24 @@ namespace SPG.Werkstatt.Domian
         private readonly IMongoDatabase _database;
 
         // MongoDB Kollektionen
-        private IMongoCollection<CustomerMongo> _customerCollection;
-        private IMongoCollection<CarMongo> _carCollection;
-        private IMongoCollection<TerminMongo> _termineCollection;
-        private IMongoCollection<Day> _dayCollection;
+        public IMongoCollection<CustomerMongo> _customerCollection;
+        public IMongoCollection<CarMongo> _carCollection;
+        public IMongoCollection<TerminMongo> _termineCollection;
+        public IMongoCollection<Day> _dayCollection;
 
 
         // Konstruktor
         public WerkstattMongoContext(IMongoDatabase database)
         {
+            //string connectionString = configuration.GetConnectionString("MongoConnection");
+
+            //// Hole den Datenbanknamen aus der appsettings.json-Datei (optional)
+            //string databaseName = configuration.GetSection("MongoSettings:DatabaseName").Value;
+
+            // Setze die Verbindung zur MongoDB
+            //var database = new MongoClient(settings.ConnectionString).GetDatabase(settings.DatabaseName);
+
+
             _database = database;
             InitializeCollections();
         }
@@ -60,7 +70,7 @@ namespace SPG.Werkstatt.Domian
                 .Rules((f, c) =>
                 {
                     c.guid = f.Random.Guid();
-                    c.Besitzer = customers[f.Random.Number(0, 79)];
+                    c.Besitzer = customers[f.Random.Number(0, customers.Count()-1)];
                     c.Marke = f.Company.CompanyName();
                     c.Modell = f.Commerce.ProductName();
                     c.Kennzeichen = f.Random.Replace("W##-###");
@@ -83,9 +93,9 @@ namespace SPG.Werkstatt.Domian
                 //public bool IsDone { get; set; }
 
                 s.guid = f.Random.Guid();
-                s.Kunde = customers[f.Random.Number(0, 79)];
+                s.Kunde = customers[f.Random.Number(0, customers.Count()-1)];
                 s.Datetime = f.Date.Between(new DateTime(2023, 12, 1), new DateTime(2023, 12, 10));
-                s.Auto = cars[f.Random.Number(1, 299)];
+                s.Auto = cars[f.Random.Number(0, cars.Count()-1)];
                 s.Summery = f.Lorem.Sentence();
                 s.accepted = f.Random.Bool();
                 s.IsDone = f.Random.Bool();

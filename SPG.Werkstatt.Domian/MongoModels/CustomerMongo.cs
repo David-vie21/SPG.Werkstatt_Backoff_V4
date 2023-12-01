@@ -1,4 +1,5 @@
 ﻿using DBI.MongoRepoGeneric;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace SPG.Werkstatt.Domian.Model
 
     public class CustomerMongo : Document
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public Guid guid { get; set; }
         public string Vorname { get; set; }
         public string Nachname { get; set; }
@@ -28,7 +29,7 @@ namespace SPG.Werkstatt.Domian.Model
         {
             return $"{Id} {Vorname} {Nachname} {Addrese} {Tel} {Email}";
         }
-        public CustomerMongo(int id, string vorname, string nachname, string addrese, string tel, string email, Guid guid)
+        public CustomerMongo(ObjectId id, string vorname, string nachname, string addrese, string tel, string email, Guid guid)
         {
             this.Id = id;
             this.Vorname = vorname;

@@ -6,7 +6,7 @@ using SPG.Werkstatt.Domian.Model;
 
 namespace Context_Test
 {
-    public class UnitTest1
+    public class ContextTestSQL
     {
         [Fact]
         public void Test1()

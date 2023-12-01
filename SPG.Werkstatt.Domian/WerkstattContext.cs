@@ -32,7 +32,6 @@ namespace SPG.Werkstatt.Domian
             {
                 //optionsBuilder.UseSqlite("Data Source= Werkstatt.db");
                 optionsBuilder.UseSqlite("Data Source= D:\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\Werkstatt.db");
-
             }
         }
 

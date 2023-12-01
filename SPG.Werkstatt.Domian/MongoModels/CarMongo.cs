@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DBI.MongoRepoGeneric;
+using MongoDB.Bson;
 using SPG.Werkstatt.Domian.Model;
 
 namespace SPG.Werkstatt.Domian.Model
@@ -12,7 +13,7 @@ namespace SPG.Werkstatt.Domian.Model
 
     public class CarMongo : Document
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public Guid guid { get; set; }
 
         public string Marke { get; set; }
@@ -30,7 +31,7 @@ namespace SPG.Werkstatt.Domian.Model
         {
             return $" Auto: {Marke} {Modell} - {Kennzeichen}";
         }
-        public CarMongo(int id, string marke, string kennzeichen, decimal kw, CustomerMongo besitzer2, string modell, DateTime erstzulassung, Guid guid) // 
+        public CarMongo(ObjectId id, string marke, string kennzeichen, decimal kw, CustomerMongo besitzer2, string modell, DateTime erstzulassung, Guid guid) // 
         {
             Id = id;
             Marke = marke;

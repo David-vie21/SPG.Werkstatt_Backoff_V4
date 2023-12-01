@@ -21,13 +21,13 @@ namespace SPG.Werkstatt.Domian.Model
         {
             get { return Kw * 1.359m; }
         }
-        public CustomerMongo? Besitzer { get; set; }
+        public Customer? Besitzer { get; set; }
 
         public override string ToString()
         {
             return $" Auto: {Marke} {Modell} - {Kennzeichen}";
         }
-        public CarMongo(int id, string marke, string kennzeichen, decimal kw, CustomerMongo besitzer2, string modell, DateTime erstzulassung, Guid guid) // 
+        public Car(int id, string marke, string kennzeichen, decimal kw, Customer besitzer2, string modell, DateTime erstzulassung, Guid guid) // 
         {
             Id = id;
             Marke = marke;
@@ -40,7 +40,7 @@ namespace SPG.Werkstatt.Domian.Model
             this.guid = guid;
         }
 
-        public CarMongo( string marke, string kennzeichen, decimal kw, CustomerMongo besitzer2, string modell, DateTime erstzulassung, Guid guid) // 
+        public Car( string marke, string kennzeichen, decimal kw, Customer besitzer2, string modell, DateTime erstzulassung, Guid guid) // 
         {
             Marke = marke;
             Modell = modell;
@@ -51,7 +51,7 @@ namespace SPG.Werkstatt.Domian.Model
                 Besitzer = besitzer2;
             this.guid = guid;
         }
-        public CarMongo()
+        public Car()
         { }
 
     }

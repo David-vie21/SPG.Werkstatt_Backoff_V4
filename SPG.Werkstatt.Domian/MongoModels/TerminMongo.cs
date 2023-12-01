@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DBI.MongoRepoGeneric;
+using MongoDB.Bson;
 using SPG.Werkstatt.Domian.Model;
 
 namespace SPG.Werkstatt.Domian.MongoModels
@@ -12,7 +13,7 @@ namespace SPG.Werkstatt.Domian.MongoModels
     public class TerminMongo : Document
     {
 
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public Guid guid { get; set; }
 
         public CustomerMongo Kunde { get; set; }
@@ -37,7 +38,7 @@ namespace SPG.Werkstatt.Domian.MongoModels
             IsDone = isDone;
         }
 
-        public TerminMongo(int id, Guid guid, CustomerMongo kunde, DateTime datetime, CarMongo auto, string summery, bool accepted, bool isDone)
+        public TerminMongo(ObjectId id, Guid guid, CustomerMongo kunde, DateTime datetime, CarMongo auto, string summery, bool accepted, bool isDone)
         {
             Id = id;
             this.guid = guid;

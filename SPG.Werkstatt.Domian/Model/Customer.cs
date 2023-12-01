@@ -25,7 +25,7 @@ namespace SPG.Werkstatt.Domian.Model
         {
             return $"{Id} {Vorname} {Nachname} {Addrese} {Tel} {Email}";
         }
-        public CustomerMongo(int id, string vorname, string nachname, string addrese, string tel, string email, Guid guid)
+        public Customer(int id, string vorname, string nachname, string addrese, string tel, string email, Guid guid)
         {
             this.Id = id;
             this.Vorname = vorname;
@@ -35,7 +35,7 @@ namespace SPG.Werkstatt.Domian.Model
             this.Email = email;
 
         }
-        public CustomerMongo(string vorname, string nachname, string addrese, string tel, string email, Guid guid)
+        public Customer(string vorname, string nachname, string addrese, string tel, string email, Guid guid)
         {
             this.Vorname = vorname;
             this.Nachname = nachname;
@@ -45,6 +45,6 @@ namespace SPG.Werkstatt.Domian.Model
             this.guid = guid;
 
         }
-        public CustomerMongo() { }
+        public Customer() { }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DBI.MongoRepoGeneric;
 using MongoDB.Driver;
 using SPG.Werkstatt.Domian;
+using SPG.Werkstatt.Domian.Model;
 using SPG.Werkstatt.Domian.MongoModels;
 using System;
 using System.Collections.Generic;
@@ -20,13 +21,17 @@ namespace Context_Test
             string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
             string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
 
-            var database = new MongoClient(connectionString).GetDatabase(databaseName);
-            var werkstattMongoContext = new WerkstattMongoContext(database);
+            //var database = new MongoClient(connectionString).GetDatabase(databaseName);
+            var werkstattMongoContext = new WerkstattMongoContext(connectionString, databaseName);
 
 
-            werkstattMongoContext.Seed();
+            werkstattMongoContext.Seed(1);
 
             Assert.True(werkstattMongoContext._dayCollection.CountDocuments(FilterDefinition<Day>.Empty) > 0);
+            Assert.True(werkstattMongoContext._termineCollection.CountDocuments(FilterDefinition<TerminMongo>.Empty) > 0);
+            Assert.True(werkstattMongoContext._customerCollection.CountDocuments(FilterDefinition<CustomerMongo>.Empty) > 0);
+            Assert.True(werkstattMongoContext._carCollection.CountDocuments(FilterDefinition<CarMongo>.Empty) > 0);
+
 
             var day = new Day();
             day.Date = new DateOnly(2021, 10, 10);

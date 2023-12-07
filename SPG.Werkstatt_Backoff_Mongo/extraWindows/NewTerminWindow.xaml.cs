@@ -15,7 +15,7 @@ using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
 using SPG.Werkstatt.Domian.MongoModels;
 
-namespace SPG.Werkstatt_Backoff_V3.extraWindows
+namespace SPG.Werkstatt_Backoff_Mongo.extraWindows
 {
     /// <summary>
     /// Interaktionslogik für NewTerminWindow.xaml
@@ -105,7 +105,7 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
 
 
             CustomerMongo kunde = getSetKunde();
-            var kundenId = kunde.Id;
+            int kundenId = kunde.Id;
 
             DateTime datum = t_Date.SelectedDate.Value;
 
@@ -150,7 +150,7 @@ namespace SPG.Werkstatt_Backoff_V3.extraWindows
 
                 //string vorname, string nachname, string addrese, string tel, string email, Guid guid
                 Guid guid = Guid.NewGuid();
-                CustomerMongo newCus = new CustomerMongo(vorname: VN, nachname: NN, addrese: ADD, tel: TELL, email: Mail, guid: guid);
+                CustomerMongo newCus = new Customer(vorname: VN, nachname: NN, addrese: ADD, tel: TELL, email: Mail, guid: guid);
 
                 //wird in DB geschrieben
                 _db.Customers.Add(newCus);

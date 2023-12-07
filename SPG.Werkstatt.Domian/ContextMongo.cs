@@ -22,7 +22,7 @@ namespace SPG.Werkstatt.Domian
 
 
         // Konstruktor
-        public WerkstattMongoContext(IMongoDatabase database)
+        public WerkstattMongoContext(string ConnectionString, string DBName) 
         {
             //string connectionString = configuration.GetConnectionString("MongoConnection");
 
@@ -30,7 +30,7 @@ namespace SPG.Werkstatt.Domian
             //string databaseName = configuration.GetSection("MongoSettings:DatabaseName").Value;
 
             // Setze die Verbindung zur MongoDB
-            //var database = new MongoClient(settings.ConnectionString).GetDatabase(settings.DatabaseName);
+            var database = new MongoClient(ConnectionString).GetDatabase(DBName);
 
 
             _database = database;
@@ -48,7 +48,7 @@ namespace SPG.Werkstatt.Domian
         }
 
         // Methode zum Hinzufügen von Testdaten in MongoDB
-        public void Seed()
+        public void Seed(int multi)
         {
             Randomizer.Seed = new Random(1017);
             List<CustomerMongo> customers = new Faker<CustomerMongo>("de")
@@ -62,7 +62,7 @@ namespace SPG.Werkstatt.Domian
                    c.Addrese = f.Address.FullAddress();
 
                })
-           .Generate(10)
+           .Generate(10*multi)
            .ToList();
             _customerCollection.InsertMany(customers);
 
@@ -78,7 +78,7 @@ namespace SPG.Werkstatt.Domian
                     c.Kw = f.Random.Decimal(60, 500);
 
                 })
-                .Generate(10);
+                .Generate(10*multi);
             _carCollection.InsertMany(cars);
 
             List<TerminMongo> termine = new Faker<TerminMongo>().Rules((f, s) =>
@@ -100,7 +100,7 @@ namespace SPG.Werkstatt.Domian
                 s.accepted = f.Random.Bool();
                 s.IsDone = f.Random.Bool();
             })
-            .Generate(20)
+            .Generate(20*multi)
             .ToList();
             _termineCollection.InsertMany(termine);
 
@@ -112,7 +112,7 @@ namespace SPG.Werkstatt.Domian
                     d.Date = new DateOnly(2023,12,f.Random.Number(1,10));
                     d.Termine = termine.Where(t => new DateOnly(d.Date.Year, d.Date.Month, d.Date.Day) == new DateOnly(t.Datetime.Year, t.Datetime.Month, t.Datetime.Day)).ToList();
                 })
-                .Generate(10);
+                .Generate(10 * multi);
             _dayCollection.InsertMany(days);
 
             //var testTermine = termine.ToList();

@@ -16,7 +16,7 @@ namespace SPG.Werkstatt.Domian
         public DbSet<CustomerMongo> Customers => Set<CustomerMongo>();
 
         public DbSet<CarMongo> Cars => Set<CarMongo>();
-        public DbSet<Termin> Termine => Set<Termin>();
+        public DbSet<TerminMongo> Termine => Set<TerminMongo>();
 
 
 
@@ -89,7 +89,7 @@ namespace SPG.Werkstatt.Domian
             SaveChanges();
 
 
-            List<Termin> termine = new Faker<Termin>().Rules((f, s) =>
+            List<TerminMongo> termine = new Faker<TerminMongo>().Rules((f, s) =>
             {
                 //         public Customer Kunde { get; set; }
                 //public DateTime Datetime { get; set; }

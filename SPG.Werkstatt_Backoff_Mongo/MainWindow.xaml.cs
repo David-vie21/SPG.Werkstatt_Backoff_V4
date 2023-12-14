@@ -206,8 +206,9 @@ namespace SPG.Werkstatt_Backoff_Mongo
                 //Save
                 try
                 {
-                    _db.Termine.Update(t2);
-                    _db.SaveChanges();
+                    //_db.Termine.Update(t2);
+                    _dbMongo._termineCollection.ReplaceOne(t => t.Id == t2.Id, t2);
+                    //_db.SaveChanges();
 
                 }
                 catch (DbUpdateConcurrencyException ex)

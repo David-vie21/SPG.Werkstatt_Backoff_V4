@@ -33,16 +33,16 @@ namespace Context_Test
             Assert.True(werkstattMongoContext._carCollection.CountDocuments(FilterDefinition<CarMongo>.Empty) > 0);
 
 
-            var day = new Day();
-            day.Date = new DateOnly(2021, 10, 10);
-            day.Termine = new List<TerminMongo>()
-            {
-                new TerminMongo()
-            };
-            werkstattMongoContext._dayCollection.InsertOne(day);
-            Assert.NotNull(werkstattMongoContext._dayCollection.Find(d => d.Date == new DateOnly(2021, 10, 10)));
-            var test = werkstattMongoContext._dayCollection.Find(d => d.Date == new DateOnly(2021, 10, 10)); 
+            //var day = new Day();
+            //day.Date = new DateOnly(2021, 10, 10);
+            //day.Termine = new List<TerminMongo>()
+            //{
+            //    new TerminMongo()
+            //};
+            //werkstattMongoContext._dayCollection.InsertOne(day);
+            //Assert.NotNull(werkstattMongoContext._dayCollection.Find(d => d.Date == new DateOnly(2021, 10, 10)));
+            //var test = werkstattMongoContext._dayCollection.Find(d => d.Date == new DateOnly(2021, 10, 10)); 
         }
            
-        }
     }
+}

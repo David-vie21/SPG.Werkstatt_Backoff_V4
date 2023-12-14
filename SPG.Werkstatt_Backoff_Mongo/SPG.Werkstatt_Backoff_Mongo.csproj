@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="D:/5 Klasse/DBI/Projekt/SPG.Werkstatt_Backoff_V4/Werkstatt.db" />
+    <!--<None Remove="D:/5 Klasse/DBI/Projekt/SPG.Werkstatt_Backoff_V4/Werkstatt.db" />-->
       <!--<None Remove="I:/Visuel Studio Projekte/SPG.Werkstatt_Backoff_V4/Context_Test/bin/Debug/net6.0/Werkstatt.db" />-->
 	  <!--C:/Users/User/Desktop/SPG.Werkstatt_Backoff_V4/SPG.Werkstatt_Backoff_V4/Context_Test/bin/Debug/net6.0/Werkstatt.db-->
 
@@ -23,10 +23,10 @@
 	
 	<ItemGroup>
 	  <!--<Resource Include="Werkstatt.db">-->
-		  	  <Resource Include="D:/5 Klasse/DBI/Projekt/SPG.Werkstatt_Backoff_V4/Werkstatt.db">
+		  	  <!--<Resource Include="D:/5 Klasse/DBI/Projekt/SPG.Werkstatt_Backoff_V4/Werkstatt.db">
 
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Resource>
+	  </Resource>-->
 	</ItemGroup>
 	
 	

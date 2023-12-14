@@ -1,4 +1,5 @@
-﻿using SPG.Werkstatt.Domian;
+﻿using MongoDB.Driver;
+using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
 using SPG.Werkstatt.Domian.MongoModels;
 using System;
@@ -22,11 +23,11 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows.Update
     /// </summary>
     public partial class Up_W : Window
     {
-        public WerkstattContext _db;
-        public Termin termin;
+        public WerkstattMongoContext _db;
+        public TerminMongo termin;
         
 
-        public Up_W(Termin termin, WerkstattContext db)
+        public Up_W(TerminMongo termin, WerkstattMongoContext db)
         {
             InitializeComponent();
             this.termin = termin;
@@ -41,7 +42,9 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows.Update
             if (termin.accepted)
                 Ac.IsChecked = true;
 
-            CarList.ItemsSource = _db.Cars.Where(c => c.Besitzer.Id == termin.Kunde.Id).ToList();
+            //CarList.ItemsSource = _db.Cars.Where(c => c.Besitzer.Id == termin.Kunde.Id).ToList();
+            CarList.ItemsSource = _db._carCollection.Find(c => c.Besitzer.Id == termin.Kunde.Id).ToList();
+
             DP.SelectedDate = termin.Datetime;
 
             K_VN.Text = termin.Kunde.Vorname;
@@ -91,10 +94,13 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows.Update
             termin.Auto.Erstzulassung = dt;
             termin.Auto.Kennzeichen = C_KE.Text;
 
-            _db.Termine.Update(termin);
-            _db.Cars.Update(termin.Auto);
-            _db.Customers.Update(termin.Kunde);
-            _db.SaveChanges();
+            //_db.Termine.Update(termin);
+            _db._termineCollection.ReplaceOne(t => t.Id == termin.Id, termin);
+            //_db.Cars.Update(termin.Auto);
+            _db._carCollection.ReplaceOne(c => c.Id == termin.Auto.Id, termin.Auto);
+            //_db.Customers.Update(termin.Kunde);
+            _db._customerCollection.ReplaceOne(k => k.Id == termin.Kunde.Id, termin.Kunde);
+            //_db.SaveChanges();
         }
     }
 }

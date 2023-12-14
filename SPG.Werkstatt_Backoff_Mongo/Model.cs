@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.Windows.Input;
 using SPG.Werkstatt.Domian.MongoModels;
+using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace SPG.Werkstatt_Backoff_Mongo
 {
@@ -18,41 +20,59 @@ namespace SPG.Werkstatt_Backoff_Mongo
         public List<TerminMongo> TermineDB { get; } = new List<TerminMongo>();
         public List<CustomerMongo> KundeListeDB { get; set; } = new List<CustomerMongo>();
 
-        private  WerkstattContext _db;
+        //private  WerkstattContext _db;
+        private readonly WerkstattMongoContext _db;
+
+
 
 
         // Dependency Injection
 
-        public Model(WerkstattContext db)
+        public Model(WerkstattMongoContext db)
         {
-            
+
             _db = db;
             getKundenListeVonDB();
             getTermineFromDB();
         }
 
-        public void getTermineFromDB()
+        public async void getTermineFromDB()
         {
             TermineDB.Clear();
-            TermineDB.AddRange(_db.Termine.OrderBy(c => c.Datetime).Include(c => c.Auto).ToList());
+            //TermineDB.AddRange(_db.Termine.OrderBy(c => c.Datetime).Include(c => c.Auto).ToList());
+            var termine = await _db._termineCollection
+            .Find(FilterDefinition<TerminMongo>.Empty)
+            .Sort(Builders<TerminMongo>.Sort.Ascending("Datetime"))
+            .ToListAsync();
+            TermineDB.AddRange(termine);
+
         }
 
-        public void getKundenListeVonDB() 
+        public async void getKundenListeVonDB() 
         {
             KundeListeDB.Clear();
-            KundeListeDB.AddRange(_db.Customers.OrderBy(c => c.Nachname).ToList());
+            //KundeListeDB.AddRange(_db.Customers.OrderBy(c => c.Nachname).ToList());
+            var customers = await _db._customerCollection
+                .Find(Builders<CustomerMongo>.Filter.Empty)
+                .Sort(Builders<CustomerMongo>.Sort.Ascending("Nachname"))
+                .ToListAsync();
+
+            KundeListeDB.AddRange(customers);
+
         }
 
 
-        public CustomerMongo getKunde(int kundenID)
+        public CustomerMongo getKunde(ObjectId kundenID)
         {
-            CustomerMongo newKunde = (CustomerMongo)_db.Customers.Where(c => c.Id == kundenID);
+            //CustomerMongo newKunde = (CustomerMongo)_db.Customers.Where(c => c.Id == kundenID);
+            CustomerMongo newKunde = _db._customerCollection.Find(c => c.Id == kundenID).FirstOrDefault();
             return newKunde;
         }
 
-        public CarMongo getAuto(int carId)
+        public CarMongo getAuto(ObjectId carId)
         {
-            CarMongo newCar = (CarMongo)_db.Cars.Where(c => c.Id == carId);
+            //CarMongo newCar = (CarMongo)_db.Cars.Where(c => c.Id == carId);
+            CarMongo newCar = _db._carCollection.Find(c => c.Id == carId).FirstOrDefault();
             return newCar;
         }
 

@@ -11,12 +11,12 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows.Update
 {
     public class Up_Model
     {
-        private WerkstattContext _db;
+        private WerkstattMongoContext _db;
         public TerminMongo C_termin;
         public CustomerMongo kunde;
 
 
-        public Up_Model(WerkstattContext db, TerminMongo termin)
+        public Up_Model(WerkstattMongoContext db, TerminMongo termin)
         {
             _db = db;
             this.C_termin = termin;

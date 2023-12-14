@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
 using SPG.Werkstatt.Domian.MongoModels;
@@ -23,16 +25,17 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows
     public partial class NewTerminWindow : Window
     {
         CustomerMongo selectedCustomerNA;
-        WerkstattContext _db;
+        //WerkstattContext _db;
+        WerkstattMongoContext _db;
 
-
-        public NewTerminWindow(WerkstattContext db)
+        public NewTerminWindow(WerkstattMongoContext db)
         {
             _db = db;
             MinHeight = 530;
             InitializeComponent();
             DataContext = new NewT_ViewModel(_db);
-            KundenListe.ItemsSource = _db.Customers.ToList();
+            //KundenListe.ItemsSource = _db.Customers.ToList();
+            KundenListe.ItemsSource = _db._customerCollection.Find(FilterDefinition<CustomerMongo>.Empty).ToList();
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(KundenListe.ItemsSource);
             view.Filter = UserFilter;
 
@@ -105,7 +108,7 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows
 
 
             CustomerMongo kunde = getSetKunde();
-            int kundenId = kunde.Id;
+            ObjectId kundenId = kunde.Id;
 
             DateTime datum = t_Date.SelectedDate.Value;
 
@@ -120,9 +123,10 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows
             //int id, Guid guid, Customer kunde, DateTime datetime, Car auto, string summery, bool accepted, bool isDone
             Guid guid = Guid.NewGuid();
             Console.WriteLine(guid);
-            Termin newTermin = new Termin(guid: guid, kunde: kunde, datetime: datum, auto: car, summery: summ, accepted: accep, isDone: isDone);
-            _db.Termine.Add(newTermin);
-            _db.SaveChanges();
+            TerminMongo newTermin = new TerminMongo(guid: guid, kunde: kunde, datetime: datum, auto: car, summery: summ, accepted: accep, isDone: isDone);
+            _db._termineCollection.InsertOne(newTermin);
+            //_db.Termine.Add(newTermin);
+            //_db.SaveChanges();
 
         }
 
@@ -150,11 +154,12 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows
 
                 //string vorname, string nachname, string addrese, string tel, string email, Guid guid
                 Guid guid = Guid.NewGuid();
-                CustomerMongo newCus = new Customer(vorname: VN, nachname: NN, addrese: ADD, tel: TELL, email: Mail, guid: guid);
+                CustomerMongo newCus = new CustomerMongo(vorname: VN, nachname: NN, addrese: ADD, tel: TELL, email: Mail, guid: guid);
 
                 //wird in DB geschrieben
-                _db.Customers.Add(newCus);
-                _db.SaveChanges();
+                _db._customerCollection.InsertOne(newCus);
+                //_db.Customers.Add(newCus);
+                //_db.SaveChanges();
 
                 return newCus;
             }
@@ -237,9 +242,10 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows
 
                 //string marke, string kennzeichen, decimal kw, Customer besitzer2, string modell, DateTime erstzulassung
                 Guid g = Guid.NewGuid();
-                CarMongo newCar = new Car(MA, Ke, KW, kunde, MO, Erst, g);
-                _db.Cars.Add(newCar);
-                _db.SaveChanges();
+                CarMongo newCar = new CarMongo(MA, Ke, KW, kunde, MO, Erst, g);
+                _db._carCollection.InsertOne(newCar);
+                //_db.Cars.Add(newCar);
+                //_db.SaveChanges();
 
                 //get ID from Kunde
                 return newCar;
@@ -332,7 +338,7 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows
             else
             {
                 Guid guid = Guid.NewGuid();
-                CustomerMongo c = new Customer("test", "test", "test", "test", "test", guid);
+                CustomerMongo c = new CustomerMongo("test", "test", "test", "test", "test", guid);
                 if (KundenListe.SelectedItem != null)
                     c = selectedCustomerNA;
                 CarMongo car = SetGetNEWCar(c);
@@ -363,9 +369,10 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows
 
             //wird in DB geschrieben
             Guid guid = Guid.NewGuid();
-            CarMongo car = new Car(MA, Ke, KW, kunde, MO, Erst, guid);
-            _db.Cars.Add(car);
-            _db.SaveChanges();
+            CarMongo car = new CarMongo(MA, Ke, KW, kunde, MO, Erst, guid);
+            _db._carCollection.InsertOne(car);
+            //_db.Cars.Add(car);
+            //_db.SaveChanges();
             return car;
 
         }
@@ -384,9 +391,10 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows
             bool isDone = false;
 
             Guid guid = Guid.NewGuid();
-            Termin termin = new Termin(guid, kunden, datum, car, summ, accep, isDone);
-            _db.Termine.Add(termin);
-            _db.SaveChanges();
+            TerminMongo termin = new TerminMongo(guid, kunden, datum, car, summ, accep, isDone);
+            _db._termineCollection.InsertOne(termin);
+            //_db.Termine.Add(termin);
+            //_db.SaveChanges();
 
         }
 
@@ -404,9 +412,10 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows
             bool isDone = false;
 
             Guid guid = Guid.NewGuid();
-            Termin termin = new Termin(guid, kunde, datum, c1, summ, accep, isDone);
-            _db.Add(termin);
-            _db.SaveChanges();
+            TerminMongo termin = new TerminMongo(guid, kunde, datum, c1, summ, accep, isDone);
+            _db._termineCollection.InsertOne(termin);
+            //_db.Add(termin);
+            //_db.SaveChanges();
         }
 
         private void TxtFilter_Change(object sender, TextChangedEventArgs e)

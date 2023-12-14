@@ -11,7 +11,8 @@ namespace SPG.Werkstatt_Backoff_Mongo
 {
     public class MainWindowViewModel
     {
-        private WerkstattContext _db;
+        //private WerkstattContext _db;
+        private readonly WerkstattMongoContext _dbMongo;
         public List<TerminMongo> Termine { get; set; }
         public List<TerminMongo> TermineTD = new List<TerminMongo>();  //TermineTD
         public HashSet<TerminMongo> TerminsHS { get; } = new HashSet<TerminMongo>();
@@ -27,11 +28,11 @@ namespace SPG.Werkstatt_Backoff_Mongo
         public CustomerMongo CurrentCustomer { get; set; }
 
 
-        public MainWindowViewModel(WerkstattContext db)
+        public MainWindowViewModel(WerkstattMongoContext db)
         {
-            _db = db;
-            Termine = new Model(_db).TermineDB;
-            KundenListe = new Model(_db).KundeListeDB;
+            _dbMongo = db;
+            Termine = new Model(_dbMongo).TermineDB;
+            KundenListe = new Model(_dbMongo).KundeListeDB;
             selectC_changed2();
             //Termine = TermineTD;
             TerminsHS = Termine.ToHashSet<TerminMongo>();
@@ -42,7 +43,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
         }
         public List<TerminMongo> selectC_changed()
         {
-            Model m = new Model(_db);
+            Model m = new Model(_dbMongo);
             Termine = m.TermineDB;
 
             TermineTD.Clear();

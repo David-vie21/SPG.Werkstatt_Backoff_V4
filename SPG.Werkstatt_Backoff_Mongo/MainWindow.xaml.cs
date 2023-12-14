@@ -18,6 +18,7 @@ using SPG.Werkstatt.Domian.Model;
 using SPG.Werkstatt_Backoff_Mongo.extraWindows;
 using SPG.Werkstatt_Backoff_Mongo.extraWindows.Update;
 using SPG.Werkstatt.Domian.MongoModels;
+using MongoDB.Driver;
 
 namespace SPG.Werkstatt_Backoff_Mongo
 {
@@ -27,28 +28,36 @@ namespace SPG.Werkstatt_Backoff_Mongo
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly WerkstattContext _db;
+        //private readonly WerkstattContext _db;
+        private readonly WerkstattMongoContext _dbMongo;
 
 
         public MainWindow()
         {
             InitializeComponent();
 
-            DbContextOptions options = new DbContextOptionsBuilder().EnableSensitiveDataLogging()
-               //.UseSqlite("Data Source= Werkstatt.db")
-               .UseSqlite("Data Source= D:\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\Werkstatt.db")
-               //C:/ Users / User / Desktop / SPG.Werkstatt_Backoff_V4 / SPG.Werkstatt_Backoff_V4 / Context_Test / bin / Debug / net6.0 / Werkstatt.db
-                .Options;
+            //DbContextOptions options = new DbContextOptionsBuilder().EnableSensitiveDataLogging()
+            //   //.UseSqlite("Data Source= Werkstatt.db")
+            //   .UseSqlite("Data Source= D:\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\Werkstatt.db")
+            //   //C:/ Users / User / Desktop / SPG.Werkstatt_Backoff_V4 / SPG.Werkstatt_Backoff_V4 / Context_Test / bin / Debug / net6.0 / Werkstatt.db
+            //    .Options;
 
-            _db = new WerkstattContext(options);
+            //_db = new WerkstattContext(options);
+            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
+
+            _dbMongo = new WerkstattMongoContext(connectionString, databaseName);
+
             MinHeight = 800;
 
-            DataContext = new MainWindowViewModel(_db);
+            DataContext = new MainWindowViewModel(_dbMongo);
 
             TerminListe.MinHeight = 300;
 
             //Gewisse Daten im Kalender anzeigen lassen:
-            var tListVAR = _db.Termine;
+            //var tListVAR = _db.Termine;
+            var tListVAR = _dbMongo._termineCollection.Find(Builders<TerminMongo>.Filter.Empty).ToList();
+
 
             List<TerminMongo> tList = new List<TerminMongo>();
             if (tListVAR != null)
@@ -79,7 +88,9 @@ namespace SPG.Werkstatt_Backoff_Mongo
             //{
             TerminMongo termin = sender.GetType().GetProperty("DataContext").GetValue(sender, null) as TerminMongo;
             //Init
-            TerminMongo? existingTermin = _db.Termine.SingleOrDefault(t => t.Id == termin.Id);
+            //TerminMongo? existingTermin = _db.Termine.SingleOrDefault(t => t.Id == termin.Id);
+            TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == termin.Id);
+
             if (existingTermin == null)
             {
                 MessageBox.Show("... not found!");
@@ -93,8 +104,9 @@ namespace SPG.Werkstatt_Backoff_Mongo
             //Save
             //try
             //{
-            _db.Termine.Update(termin);
-            _db.SaveChanges();
+            //_db.Termine.Update(termin);
+            _dbMongo._termineCollection.ReplaceOne(t => t.Id == termin.Id, termin);
+            //_db.SaveChanges();
             //}
             //catch (DbUpdateConcurrencyException ex)
             //{
@@ -127,7 +139,8 @@ namespace SPG.Werkstatt_Backoff_Mongo
                 TerminMongo t2 = sender.GetType().GetProperty("DataContext").GetValue(sender, null) as TerminMongo;
 
                 //Init
-                TerminMongo? existingTermin = _db.Termine.SingleOrDefault(t => t.Id == t2.Id);
+                //TerminMongo? existingTermin = _db.Termine.SingleOrDefault(t => t.Id == t2.Id);
+                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t2.Id);
                 if (existingTermin == null)
                 {
                     MessageBox.Show("... not found!");
@@ -141,8 +154,10 @@ namespace SPG.Werkstatt_Backoff_Mongo
                 //Save
                 try
                 {
-                    _db.Termine.Update(t2);
-                    _db.SaveChanges();
+                    //_db.Termine.Update(t2);
+                    _dbMongo._termineCollection.ReplaceOne(t => t.Id == t2.Id, t2);
+
+                   // _db.SaveChanges();
 
                 }
                 catch (DbUpdateConcurrencyException ex)
@@ -175,7 +190,8 @@ namespace SPG.Werkstatt_Backoff_Mongo
             {
                 TerminMongo t2 = sender.GetType().GetProperty("DataContext").GetValue(sender, null) as TerminMongo;
                 //Init
-                TerminMongo? existingTermin = _db.Termine.SingleOrDefault(t => t.Id == t2.Id);
+                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t2.Id);
+
 
                 if (existingTermin == null)
                 {
@@ -224,7 +240,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
             {
                 TerminMongo t2 = sender.GetType().GetProperty("DataContext").GetValue(sender, null) as TerminMongo;
                 //Init
-                TerminMongo? existingTermin = _db.Termine.SingleOrDefault(t => t.Id == t2.Id);
+                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t2.Id);
                 if (existingTermin == null)
                 {
                     MessageBox.Show("... not found!");
@@ -238,8 +254,8 @@ namespace SPG.Werkstatt_Backoff_Mongo
                 //Save
                 try
                 {
-                    _db.Termine.Update(t2);
-                    _db.SaveChanges();
+                    _dbMongo._termineCollection.ReplaceOne(t => t.Id == t2.Id, t2);
+                    //_db.SaveChanges();
 
                 }
                 catch (DbUpdateConcurrencyException ex)
@@ -274,15 +290,16 @@ namespace SPG.Werkstatt_Backoff_Mongo
                 if (t1 == null)
                     t1 = ((MainWindowViewModel)DataContext).CurrentTermin;
 
-                TerminMongo? existingTermin = _db.Termine.SingleOrDefault(t => t.Id == t1.Id);
+                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t1.Id);
                 if (existingTermin == null || t1 == null)
                 {
                     MessageBox.Show("... not found!");
                     return;
                 }
 
-                _db.Remove<TerminMongo>(t1);
-                _db.SaveChanges();
+                //_db.Remove<TerminMongo>(t1);
+                _dbMongo._termineCollection.DeleteOne(t => t.Id == t1.Id);
+                //_db.SaveChanges();
 
 
                 TerminListe.ItemsSource = null;
@@ -300,12 +317,12 @@ namespace SPG.Werkstatt_Backoff_Mongo
 
         private void Button_Refrech(object sender, RoutedEventArgs e)
         {
-            DataContext = new MainWindowViewModel(_db);
+            DataContext = new MainWindowViewModel(_dbMongo);
         }
 
         private void ButtonNEW_Click(object sender, RoutedEventArgs e)
         {
-            NewTerminWindow win2 = new NewTerminWindow(_db);
+            NewTerminWindow win2 = new NewTerminWindow(_dbMongo);
             win2.Show();
         }
 
@@ -313,7 +330,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
         {
             if (((MainWindowViewModel)DataContext).CurrentTermin is not null)
             {
-                Up_W win3 = new Up_W(((MainWindowViewModel)DataContext).CurrentTermin, _db);
+                Up_W win3 = new Up_W(((MainWindowViewModel)DataContext).CurrentTermin, _dbMongo);
                 win3.Show();
             }
             else 

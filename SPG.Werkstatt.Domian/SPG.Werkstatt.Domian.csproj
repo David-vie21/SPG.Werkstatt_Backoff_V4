@@ -13,12 +13,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MongoDB.Driver" Version="2.23.0" />
   </ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\..\DBI.MongoRepoGeneric\DBI.MongoRepoGeneric.csproj" />
-		<!--<ProjectReference Include="..\Context_Test\Context_Test.csproj" />-->
-
-	</ItemGroup>
 
 
 </Project>

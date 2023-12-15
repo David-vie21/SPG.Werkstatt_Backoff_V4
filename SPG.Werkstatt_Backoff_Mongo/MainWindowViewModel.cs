@@ -31,8 +31,8 @@ namespace SPG.Werkstatt_Backoff_Mongo
         public MainWindowViewModel(WerkstattMongoContext db)
         {
             _dbMongo = db;
-            Termine = new Model(_dbMongo).TermineDB;
-            KundenListe = new Model(_dbMongo).KundeListeDB;
+            Termine.AddRange(new Model(_dbMongo).TermineDB);
+            KundenListe.AddRange(new Model(_dbMongo).KundeListeDB);
             selectC_changed2();
             //Termine = TermineTD;
             TerminsHS = Termine.ToHashSet<TerminMongo>();

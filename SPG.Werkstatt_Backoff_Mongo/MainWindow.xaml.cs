@@ -19,6 +19,7 @@ using SPG.Werkstatt_Backoff_Mongo.extraWindows;
 using SPG.Werkstatt_Backoff_Mongo.extraWindows.Update;
 using SPG.Werkstatt.Domian.MongoModels;
 using MongoDB.Driver;
+using System.Diagnostics;
 
 namespace SPG.Werkstatt_Backoff_Mongo
 {
@@ -318,7 +319,16 @@ namespace SPG.Werkstatt_Backoff_Mongo
 
         private void Button_Refrech(object sender, RoutedEventArgs e)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             DataContext = new MainWindowViewModel(_dbMongo);
+            stopwatch.Stop();
+            TimeSpan ts = stopwatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                   ts.Hours, ts.Minutes, ts.Seconds,
+                   ts.Milliseconds / 10);
+            Console.WriteLine("RunTime " + elapsedTime);
+            Refrech_TEXT.Text = "Refrech Time(hh:mm:ss:ms): " + elapsedTime;
         }
 
         private void ButtonNEW_Click(object sender, RoutedEventArgs e)

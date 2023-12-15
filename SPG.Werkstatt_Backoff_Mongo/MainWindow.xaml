@@ -10,7 +10,7 @@
 
     <Window.Resources>
         <converters:LookupConverter x:Key="ConverterHigligthdate"></converters:LookupConverter>
-        
+
         <Style x:Key="CalendarDayButtonStyle" TargetType="{x:Type CalendarDayButton}">
             <Style.Triggers>
                 <DataTrigger Value="True">
@@ -54,7 +54,9 @@
                         </TextBlock>
                         <TextBlock x:Name="timer" FontSize="15"></TextBlock>
                     </StackPanel>
-                    <Button Grid.Column="0" Grid.Row="1" Margin="160,50,160,50" Click="Button_Refrech" Width="190" Height="30">Refresh</Button>
+                    <Button Grid.Column="0" Grid.Row="1" Margin="66,81,341,77" Click="Button_Refrech" Width="190" Height="30">Refresh</Button>
+                    <TextBlock x:Name="Refrech_TEXT" Grid.Column="0" Grid.Row="1" Margin="386,81,46,77" TextWrapping="Wrap" Text="Refrech Time:" Height="30" Width="165"/>
+
                     <StackPanel Grid.Column="1" Grid.Row="0">
                         <Border BorderBrush="Black" BorderThickness="1">
 

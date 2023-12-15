@@ -28,6 +28,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
         public CustomerMongo CurrentCustomer { get; set; }
 
 
+
         public MainWindowViewModel(WerkstattMongoContext db)
         {
             _dbMongo = db;

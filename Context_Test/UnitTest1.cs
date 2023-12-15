@@ -13,7 +13,7 @@ namespace Context_Test
         {
             DbContextOptions options = new DbContextOptionsBuilder()
                 //.UseSqlite("Data Source= Werkstatt.db")
-                .UseSqlite("Data Source= D:\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\Werkstatt.db")
+                .UseSqlite("Data Source= I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\SPG.Werkstatt_Backoff_V3\\Werkstatt.db")
                 .Options;
 
             WerkstattContext context = new WerkstattContext(options);

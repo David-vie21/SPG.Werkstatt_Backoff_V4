@@ -30,10 +30,10 @@ namespace SPG.Werkstatt_Backoff_V3
             getTermineFromDB();
         }
 
-        public void getTermineFromDB()
+        public async void getTermineFromDB()
         {
             TermineDB.Clear();
-            TermineDB.AddRange(_db.Termine.OrderBy(c => c.Datetime).Include(c => c.Auto).ToList());
+            TermineDB.AddRange(await _db.Termine.OrderBy(c => c.Datetime).Include(c => c.Auto).ToListAsync());
         }
 
         public void getKundenListeVonDB() 

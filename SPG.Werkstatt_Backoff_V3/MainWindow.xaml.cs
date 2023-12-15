@@ -35,7 +35,7 @@ namespace SPG.Werkstatt_Backoff_V3
 
             DbContextOptions options = new DbContextOptionsBuilder().EnableSensitiveDataLogging()
                //.UseSqlite("Data Source= Werkstatt.db")
-               .UseSqlite("Data Source= D:\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\Werkstatt.db")
+               .UseSqlite("Data Source= I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\SPG.Werkstatt_Backoff_V3\\Werkstatt.db")
                //C:/ Users / User / Desktop / SPG.Werkstatt_Backoff_V4 / SPG.Werkstatt_Backoff_V4 / Context_Test / bin / Debug / net6.0 / Werkstatt.db
 .Options;
 

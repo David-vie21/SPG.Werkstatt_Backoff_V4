@@ -13,7 +13,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
     {
         //private WerkstattContext _db;
         private readonly WerkstattMongoContext _dbMongo;
-        public List<TerminMongo> Termine { get; set; }
+        public List<TerminMongo> Termine { get; set; } = new List<TerminMongo>();
         public List<TerminMongo> TermineTD = new List<TerminMongo>();  //TermineTD
         public HashSet<TerminMongo> TerminsHS { get; } = new HashSet<TerminMongo>();
         public HashSet<DateTime> DatesHS { get; } = new HashSet<DateTime>();

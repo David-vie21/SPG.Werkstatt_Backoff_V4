@@ -40,10 +40,10 @@ namespace SPG.Werkstatt_Backoff_Mongo
         {
             TermineDB.Clear();
             //TermineDB.AddRange(_db.Termine.OrderBy(c => c.Datetime).Include(c => c.Auto).ToList());
-            var termine = await _db._termineCollection
+            var termine = _db._termineCollection
             .Find(FilterDefinition<TerminMongo>.Empty)
             .Sort(Builders<TerminMongo>.Sort.Ascending("Datetime"))
-            .ToListAsync();
+            .ToList();
             TermineDB.AddRange(termine);
 
         }
@@ -52,10 +52,10 @@ namespace SPG.Werkstatt_Backoff_Mongo
         {
             KundeListeDB.Clear();
             //KundeListeDB.AddRange(_db.Customers.OrderBy(c => c.Nachname).ToList());
-            var customers = await _db._customerCollection
+            var customers = _db._customerCollection
                 .Find(Builders<CustomerMongo>.Filter.Empty)
                 .Sort(Builders<CustomerMongo>.Sort.Ascending("Nachname"))
-                .ToListAsync();
+                .ToList();
 
             KundeListeDB.AddRange(customers);
 

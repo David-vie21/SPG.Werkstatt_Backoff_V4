@@ -89,7 +89,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
             TerminMongo termin = sender.GetType().GetProperty("DataContext").GetValue(sender, null) as TerminMongo;
             //Init
             //TerminMongo? existingTermin = _db.Termine.SingleOrDefault(t => t.Id == termin.Id);
-            TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == termin.Id);
+            TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == termin.Id).First();
 
             if (existingTermin == null)
             {
@@ -140,7 +140,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
 
                 //Init
                 //TerminMongo? existingTermin = _db.Termine.SingleOrDefault(t => t.Id == t2.Id);
-                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t2.Id);
+                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t2.Id).First();
                 if (existingTermin == null)
                 {
                     MessageBox.Show("... not found!");
@@ -190,8 +190,8 @@ namespace SPG.Werkstatt_Backoff_Mongo
             {
                 TerminMongo t2 = sender.GetType().GetProperty("DataContext").GetValue(sender, null) as TerminMongo;
                 //Init
-                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t2.Id);
-
+                var existingTermin = (TerminMongo)_dbMongo._termineCollection.Find<TerminMongo>(t => t.Id == t2.Id).First();
+                
 
                 if (existingTermin == null)
                 {
@@ -241,7 +241,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
             {
                 TerminMongo t2 = sender.GetType().GetProperty("DataContext").GetValue(sender, null) as TerminMongo;
                 //Init
-                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t2.Id);
+                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t2.Id).First();
                 if (existingTermin == null)
                 {
                     MessageBox.Show("... not found!");
@@ -291,7 +291,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
                 if (t1 == null)
                     t1 = ((MainWindowViewModel)DataContext).CurrentTermin;
 
-                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t1.Id);
+                TerminMongo? existingTermin = (TerminMongo?)_dbMongo._termineCollection.Find(t => t.Id == t1.Id).First();
                 if (existingTermin == null || t1 == null)
                 {
                     MessageBox.Show("... not found!");

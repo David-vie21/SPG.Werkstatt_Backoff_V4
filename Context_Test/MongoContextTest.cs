@@ -59,58 +59,48 @@ namespace Context_Test
 
             //var database = new MongoClient(connectionString).GetDatabase(databaseName);
             var werkstattMongoContext = new WerkstattMongoContext(connectionString, databaseName);
-
-            //x1
             Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
+            TimeSpan ts;
+            string elapsedTime;
+            //x1
 
-            werkstattMongoContext.Seed(1);
+            //stopwatch.Start();
 
-            stopwatch.Stop();
-            TimeSpan ts = stopwatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
-               ts.Hours, ts.Minutes, ts.Seconds,
-               ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SeedTime x1 (hh:mm:ss:ms:ns):" + elapsedTime);
+            //werkstattMongoContext.Seed(1);
 
-            //x10
-            stopwatch.Start();
+            //stopwatch.Stop();
+            //ts = stopwatch.Elapsed;
+            //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+            //   ts.Hours, ts.Minutes, ts.Seconds,
+            //   ts.Milliseconds / 10, ts.Milliseconds.ToString().Substring(2),ts.Ticks);
+            //LogWriter.LogWrite("SeedTime x1 (hh:mm:ss.ms.ns):" + elapsedTime);
 
-            werkstattMongoContext.Seed(10);
+            ////x10
+            //stopwatch.Start();
 
-            stopwatch.Stop();
-            ts = stopwatch.Elapsed;
-            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
-               ts.Hours, ts.Minutes, ts.Seconds,
-               ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SeedTime x10 (hh:mm:ss:ms:ns):" + elapsedTime);
+            //werkstattMongoContext.Seed(10);
 
-            //x100
-            stopwatch.Start();
+            //stopwatch.Stop();
+            //ts = stopwatch.Elapsed;
+            //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+            //   ts.Hours, ts.Minutes, ts.Seconds,
+            //   ts.Milliseconds / 10, ts.Milliseconds);
+            //LogWriter.LogWrite("SeedTime x10 (hh:mm:ss:ms:ns):" + elapsedTime);
 
-            werkstattMongoContext.Seed(100);
+            ////x100
+            //stopwatch.Start();
 
-            stopwatch.Stop();
-            ts = stopwatch.Elapsed;
-            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
-               ts.Hours, ts.Minutes, ts.Seconds,
-               ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SeedTime x100 (hh:mm:ss:ms:ns):" + elapsedTime);
+            //werkstattMongoContext.Seed(100);
+
+            //stopwatch.Stop();
+            //ts = stopwatch.Elapsed;
+            //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+            //   ts.Hours, ts.Minutes, ts.Seconds,
+            //   ts.Milliseconds / 10, ts.Milliseconds);
+            //LogWriter.LogWrite("SeedTime x100 (hh:mm:ss:ms:ns):" + elapsedTime);
 
 
-            //x1000
-            stopwatch.Start();
-
-            werkstattMongoContext.Seed(1000);
-
-            stopwatch.Stop();
-            ts = stopwatch.Elapsed;
-            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
-               ts.Hours, ts.Minutes, ts.Seconds,
-               ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SeedTime x1000 (hh:mm:ss:ms:ns):" + elapsedTime);
-
-            ////x10000
+            ////x1000
             //stopwatch.Start();
 
             //werkstattMongoContext.Seed(1000);
@@ -120,7 +110,19 @@ namespace Context_Test
             //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
             //   ts.Hours, ts.Minutes, ts.Seconds,
             //   ts.Milliseconds / 10, ts.Milliseconds);
-            //LogWriter.LogWrite("SeedTime x10000 (hh:mm:ss:ms:ns):" + elapsedTime);
+            //LogWriter.LogWrite("SeedTime x1000 (hh:mm:ss:ms:ns):" + elapsedTime);
+
+            //x10000
+            stopwatch.Start();
+
+            werkstattMongoContext.Seed(10000);
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+               ts.Hours, ts.Minutes, ts.Seconds,
+               ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("SeedTime x10000 (hh:mm:ss.ms.ns):" + elapsedTime);
             Assert.True(true);
         }
         [Fact]

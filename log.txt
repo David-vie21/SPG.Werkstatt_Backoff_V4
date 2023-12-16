@@ -86,3 +86,23 @@ Log Entry : 20:40:50 Samstag, 16. Dezember 2023
   :
   :Mongo: Find Termin  - Filter, Projekt and Sort (hh:mm:ss:ms:ns):00:00:02.00.09
 -------------------------------
+
+Log Entry : 22:04:40 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x1 (hh:mm:ss:ms:ns:ticks):00:00:00.57.574.5747118
+-------------------------------
+
+Log Entry : 22:06:59 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x1 (hh:mm:ss:ms:ns:ticks):00:00:00.40.0.4002525
+-------------------------------
+
+Log Entry : 22:09:54 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x1 (hh:mm:ss.ms.ns):00:00:00.52.6
+-------------------------------
+
+Log Entry : 23:19:19 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x10000 (hh:mm:ss.ms.ns):01:08:32.23.238
+-------------------------------

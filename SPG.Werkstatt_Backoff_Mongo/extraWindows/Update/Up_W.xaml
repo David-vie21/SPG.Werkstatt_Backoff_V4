@@ -46,9 +46,9 @@
 
             <DatePicker x:Name="DP"></DatePicker>
             <ListView x:Name="CarList" Grid.Column="1"></ListView>
-            
+
         </Grid>
-            
+
         <!--Kunden Update-->
         <Grid Grid.Column="1" Grid.Row="1" Margin="5">
             <Grid.ColumnDefinitions>
@@ -99,7 +99,8 @@
 
 
         </Grid>
-        <Button Grid.Column="1" Grid.Row="3" Margin="150,10,100,10" Click="Button_Click">Update</Button>
+        <Button Grid.Column="1" Grid.Row="3" Margin="218,10,32,10" Click="Button_Click">Update</Button>
+        <TextBox Grid.Column="1" Grid.Row="3" x:Name="RefrechTEXT" Margin="10,10,212,10" Text="Refresh Time:"/>
     </Grid>
 
 </Window>

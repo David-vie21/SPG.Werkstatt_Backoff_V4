@@ -4,6 +4,7 @@ using SPG.Werkstatt.Domian.Model;
 using SPG.Werkstatt.Domian.MongoModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,9 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows.Update
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             CarMongo car = termin.Auto;
             CustomerMongo kunde = termin.Kunde;
            
@@ -101,6 +105,14 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows.Update
             //_db.Customers.Update(termin.Kunde);
             _db._customerCollection.ReplaceOne(k => k.Id == termin.Kunde.Id, termin.Kunde);
             //_db.SaveChanges();
+
+            stopwatch.Stop();
+            TimeSpan ts = stopwatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                   ts.Hours, ts.Minutes, ts.Seconds,
+                   ts.Milliseconds / 10);
+            Console.WriteLine("RunTime " + elapsedTime);
+            RefrechTEXT.Text = "Refrech Time(hh:mm:ss:ms): " + elapsedTime;
         }
     }
 }

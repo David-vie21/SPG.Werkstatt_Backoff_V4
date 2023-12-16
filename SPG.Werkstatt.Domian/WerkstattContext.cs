@@ -40,7 +40,7 @@ namespace SPG.Werkstatt.Domian
             //modelBuilder.ApplyConfiguration<Customer>(new CustomerConfiguration());
         }
 
-        public void Seed()
+        public void Seed(int multi)
         {
             Randomizer.Seed = new Random(1017);
 
@@ -59,7 +59,7 @@ namespace SPG.Werkstatt.Domian
                     c.Addrese = f.Address.FullAddress();
 
                 })
-            .Generate(80)
+            .Generate(10*multi)
             .ToList();
             Customers.AddRange(customers);
             SaveChanges();
@@ -75,7 +75,7 @@ namespace SPG.Werkstatt.Domian
                 //public decimal Kw { get; set; }
 
                 p.guid = f.Random.Guid();
-                p.Besitzer = customers[f.Random.Number(0, 79)];
+                p.Besitzer = customers[f.Random.Number(0, customers.Count() - 1)];
                 p.Marke = f.Company.CompanyName();
                 p.Modell = f.Commerce.ProductName();
                 p.Kennzeichen = f.Random.Replace("W##-###");
@@ -83,7 +83,7 @@ namespace SPG.Werkstatt.Domian
                 p.Kw = f.Random.Decimal(60, 500);
 
             })
-            .Generate(300)
+            .Generate(10 * multi)
             .ToList();
             Cars.AddRange(cars);
             SaveChanges();
@@ -101,14 +101,14 @@ namespace SPG.Werkstatt.Domian
                 //public bool IsDone { get; set; }
 
                 s.guid = f.Random.Guid();
-                s.Kunde = customers[f.Random.Number(0, 79)];
+                s.Kunde = customers[f.Random.Number(0, customers.Count() - 1)];
                 s.Datetime = f.Date.Past(3, DateTime.Now);
-                s.Auto = cars[f.Random.Number(1, 299)];
+                s.Auto = cars[f.Random.Number(1, cars.Count() - 1)];
                 s.Summery = f.Lorem.Sentence();
                 s.accepted = f.Random.Bool();
                 s.IsDone = f.Random.Bool();
             })
-            .Generate(3000)
+            .Generate(10 * multi)
             .ToList();
             Termine.AddRange(termine);
             SaveChanges();

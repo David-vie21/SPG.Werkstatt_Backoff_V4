@@ -96,9 +96,9 @@ namespace SPG.Werkstatt_Backoff_Mongo
         {
             return KundenListe.Where(c =>
                 (string.IsNullOrEmpty(vor) || c.Vorname.ToLower().Contains(vor.ToLower())) &&
-                (string.IsNullOrEmpty(nach) || c.Nachname.ToLower() == nach.ToLower()) &&
-                (string.IsNullOrEmpty(tel) || c.Tel.ToLower() == tel.ToLower()) &&
-                (string.IsNullOrEmpty(add) || c.Addrese.ToLower() == add.ToLower())
+                (string.IsNullOrEmpty(nach) || c.Nachname.ToLower().Contains(nach.ToLower())) &&
+                (string.IsNullOrEmpty(tel) || c.Tel.ToLower().Contains(tel.ToLower())) &&
+                (string.IsNullOrEmpty(add) || c.Addrese.ToLower().Contains(add.ToLower()))
             ).ToList();
         }
         

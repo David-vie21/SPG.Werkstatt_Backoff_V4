@@ -20,6 +20,12 @@ using SPG.Werkstatt_Backoff_Mongo.extraWindows.Update;
 using SPG.Werkstatt.Domian.MongoModels;
 using MongoDB.Driver;
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using DnsClient.Internal;
+using ILoggerFactory = Microsoft.Extensions.Logging.ILoggerFactory;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
+using SPG.Werkstatt_Backoff_Mongo.Helper;
 
 namespace SPG.Werkstatt_Backoff_Mongo
 {
@@ -32,11 +38,12 @@ namespace SPG.Werkstatt_Backoff_Mongo
         //private readonly WerkstattContext _db;
         private readonly WerkstattMongoContext _dbMongo;
 
-
         public MainWindow()
         {
-            InitializeComponent();
+           
 
+
+            InitializeComponent();
             //DbContextOptions options = new DbContextOptionsBuilder().EnableSensitiveDataLogging()
             //   //.UseSqlite("Data Source= Werkstatt.db")
             //   .UseSqlite("Data Source= D:\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\Werkstatt.db")
@@ -316,11 +323,13 @@ namespace SPG.Werkstatt_Backoff_Mongo
 
 
                 TimeSpan ts = stopwatch.Elapsed;
-                string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                       ts.Hours, ts.Minutes, ts.Seconds,
-                       ts.Milliseconds / 10);
+                string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+               ts.Hours, ts.Minutes, ts.Seconds,
+               ts.Milliseconds / 10, ts.Milliseconds);
                 Console.WriteLine("RunTime " + elapsedTime);
-                Refrech_TEXT_DEL.Text = "Refrech Time(hh:mm:ss:ms): " + elapsedTime;
+                Refrech_TEXT_DEL.Text = "DEL Timer(hh:mm:ss:ms:ns): " + elapsedTime;
+                LogWriter.LogWrite("Delete Time (hh:mm:ss:ms:ns):" + elapsedTime);
+
             }
             catch (Exception ex)
             {
@@ -336,11 +345,12 @@ namespace SPG.Werkstatt_Backoff_Mongo
             DataContext = new MainWindowViewModel(_dbMongo);
             stopwatch.Stop();
             TimeSpan ts = stopwatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                   ts.Hours, ts.Minutes, ts.Seconds,
-                   ts.Milliseconds / 10);
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+               ts.Hours, ts.Minutes, ts.Seconds,
+               ts.Milliseconds / 10, ts.Milliseconds);
             Console.WriteLine("RunTime " + elapsedTime);
-            Refrech_TEXT.Text = "Refrech Time(hh:mm:ss:ms): " + elapsedTime;
+            Refrech_TEXT.Text = "Timer(hh:mm:ss:ms:ns): " + elapsedTime;
+            LogWriter.LogWrite("Refrech Time (Load all Data) (hh:mm:ss:ms:ns):" + elapsedTime);
         }
 
         private void ButtonNEW_Click(object sender, RoutedEventArgs e)
@@ -391,11 +401,13 @@ namespace SPG.Werkstatt_Backoff_Mongo
             //TIMER
             stopwatch.Stop();
             TimeSpan ts = stopwatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                    ts.Hours, ts.Minutes, ts.Seconds,
-                   ts.Milliseconds / 10);
+                   ts.Milliseconds / 10, ts.Milliseconds);
             Console.WriteLine("RunTime " + elapsedTime);
-            FilterTIMER.Text = "Timer(hh:mm:ss:ms): " + elapsedTime;
+            FilterTIMER.Text = "Timer(hh:mm:ss:ms:ns): " + elapsedTime;
+            LogWriter.LogWrite("Filter Time (hh:mm:ss:ms:ns):" + elapsedTime);
+
         }
 
         //private void TxtFilter_Change(object sender, TextChangedEventArgs e)

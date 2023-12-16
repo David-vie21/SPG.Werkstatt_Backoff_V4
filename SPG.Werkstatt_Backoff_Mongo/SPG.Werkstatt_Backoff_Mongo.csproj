@@ -17,13 +17,5 @@
 
 	</ItemGroup>
 	
-	<ItemGroup>
-	  <!--<Resource Include="Werkstatt.db">-->
-		  	  <!--<Resource Include="D:/5 Klasse/DBI/Projekt/SPG.Werkstatt_Backoff_V4/Werkstatt.db">
-
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Resource>-->
-	</ItemGroup>
-	
 	
 </Project>

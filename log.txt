@@ -1,0 +1,35 @@
+
+Log Entry : 18:43:15 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x1 (hh:mm:ss:ms:ns):00:00:00.47.474
+-------------------------------
+
+Log Entry : 18:43:21 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x10 (hh:mm:ss:ms:ns):00:00:00.91.918
+-------------------------------
+
+Log Entry : 18:43:38 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x100 (hh:mm:ss:ms:ns):00:00:14.65.654
+-------------------------------
+
+Log Entry : 18:45:32 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x1 (hh:mm:ss:ms:ns):00:00:00.52.523
+-------------------------------
+
+Log Entry : 18:45:50 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x10 (hh:mm:ss:ms:ns):00:00:01.21.217
+-------------------------------
+
+Log Entry : 18:46:21 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x100 (hh:mm:ss:ms:ns):00:00:29.00.09
+-------------------------------
+
+Log Entry : 19:08:28 Samstag, 16. Dezember 2023
+  :
+  :SeedTime x1000 (hh:mm:ss:ms:ns):00:22:21.81.811
+-------------------------------

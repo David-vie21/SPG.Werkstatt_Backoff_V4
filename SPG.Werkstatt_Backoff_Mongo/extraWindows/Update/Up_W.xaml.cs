@@ -2,6 +2,7 @@
 using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
 using SPG.Werkstatt.Domian.MongoModels;
+using SPG.Werkstatt_Backoff_Mongo.Helper;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -108,11 +109,13 @@ namespace SPG.Werkstatt_Backoff_Mongo.extraWindows.Update
 
             stopwatch.Stop();
             TimeSpan ts = stopwatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                   ts.Hours, ts.Minutes, ts.Seconds,
-                   ts.Milliseconds / 10);
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+               ts.Hours, ts.Minutes, ts.Seconds,
+               ts.Milliseconds / 10, ts.Milliseconds);
             Console.WriteLine("RunTime " + elapsedTime);
-            RefrechTEXT.Text = "Refrech Time(hh:mm:ss:ms): " + elapsedTime;
+            RefrechTEXT.Text = "Timer(hh:mm:ss:ms:ns): " + elapsedTime;
+            LogWriter.LogWrite("Update Time (hh:mm:ss:ms:ns):" + elapsedTime);
+
         }
     }
 }

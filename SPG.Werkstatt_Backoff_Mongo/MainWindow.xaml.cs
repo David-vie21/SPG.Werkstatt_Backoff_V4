@@ -49,7 +49,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
 
             _dbMongo = new WerkstattMongoContext(connectionString, databaseName);
 
-            MinHeight = 800;
+            MinHeight = 900;
 
             DataContext = new MainWindowViewModel(_dbMongo);
 
@@ -360,6 +360,42 @@ namespace SPG.Werkstatt_Backoff_Mongo
             {
                 MessageBox.Show("Kein Termin ausgewählt");
             }
+        }
+
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            //ACT
+
+            var vorname = FilterTextBoxVORNAME.Text;
+            var nachname = FilterTextBoxNACHNAME.Text;
+            var tel = FilterTextBoxTEL.Text;
+            var add = FilterTextBoxADD.Text;
+
+
+
+            if (FilterTextBoxVORNAME.Text.Equals("Vorname")) vorname = "";
+            if(FilterTextBoxNACHNAME.Text.Equals("Nachname")) nachname = "";
+            if(FilterTextBoxTEL.Text.Equals("Telefon Nummer")) tel = "";
+            if(FilterTextBoxADD.Text.Equals("Adresse")) add = "";
+
+            KundenListe.ItemsSource = null;
+            KundenListe.Items.Refresh();
+            KundenListe.ItemsSource = ((MainWindowViewModel)DataContext).filterCustomers(vorname, nachname, tel, add);
+            KundenListe.Items.Refresh();
+
+
+
+            //TIMER
+            stopwatch.Stop();
+            TimeSpan ts = stopwatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                   ts.Hours, ts.Minutes, ts.Seconds,
+                   ts.Milliseconds / 10);
+            Console.WriteLine("RunTime " + elapsedTime);
+            FilterTIMER.Text = "Timer(hh:mm:ss:ms): " + elapsedTime;
         }
 
         //private void TxtFilter_Change(object sender, TextChangedEventArgs e)

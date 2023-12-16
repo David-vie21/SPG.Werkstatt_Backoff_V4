@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:extToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:SPG.Werkstatt_Backoff_Mongo"
         xmlns:converters ="clr-namespace:SPG.Werkstatt_Backoff_Mongo.Converter"
         mc:Ignorable="d"
@@ -113,17 +114,18 @@
 
                    
                     <!-- Filter TextBox -->
-                    <TextBox x:Name="FilterTextBoxVORNAME" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="FilterTextBoxNACHNAME" HorizontalAlignment="Left" Height="23" Margin="140,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="FilterTextBoxTEL" HorizontalAlignment="Left" Height="23" Margin="270,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="FilterTextBoxADD" HorizontalAlignment="Left" Height="23" Margin="400,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="FilterTextBoxVORNAME" Text="Vorname" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+                    <TextBox x:Name="FilterTextBoxNACHNAME" Text="Nachname" HorizontalAlignment="Left" Height="23" Margin="140,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="FilterTextBoxTEL" Text="Telefon Nummer" HorizontalAlignment="Left" Height="23" Margin="270,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="FilterTextBoxADD" Text="Adresse" HorizontalAlignment="Left" Height="23" Margin="400,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
                     <!-- Filter Button -->
                     <Button x:Name="FilterButton" Content="Filter" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="75" Click="FilterButton_Click"/>
-                    <TextBox x:Name="FilterTIMER" HorizontalAlignment="Left" Height="23" Margin="140,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    
-                    
-                    <ListView ItemsSource="{Binding KundenListe}" SelectedItem="{Binding CurrentCustomer}" Margin="0,97,0,0">
+                    <TextBox x:Name="FilterTIMER" Text="Timer:" HorizontalAlignment="Left" Height="23" Margin="140,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"/>
+
+
+                    <ListView x:Name="KundenListe" ItemsSource="{Binding KundenListe}" SelectedItem="{Binding CurrentCustomer}" Margin="0,97,0,0">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="{x:Type ListViewItem}">
                                 <!-- get rid of the highlighting -->

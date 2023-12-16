@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
 using SPG.Werkstatt.Domian.MongoModels;
@@ -18,6 +20,7 @@ namespace SPG.Werkstatt_Backoff_Mongo
         public HashSet<TerminMongo> TerminsHS { get; } = new HashSet<TerminMongo>();
         public HashSet<DateTime> DatesHS { get; } = new HashSet<DateTime>();
         public List<CustomerMongo> KundenListe { get; set; } = new List<CustomerMongo>();
+        public List<CustomerMongo> KundenListeFILTER { get; set; } = new List<CustomerMongo>();
 
 
         private TerminMongo _currentTermin;
@@ -88,5 +91,16 @@ namespace SPG.Werkstatt_Backoff_Mongo
             _currentTermin.IsDone = false;
             return TermineTD;
         }
+
+        public List<CustomerMongo> filterCustomers(string vor, string nach, string tel, string add)
+        {
+            return KundenListe.Where(c =>
+                (string.IsNullOrEmpty(vor) || c.Vorname.ToLower().Contains(vor.ToLower())) &&
+                (string.IsNullOrEmpty(nach) || c.Nachname.ToLower() == nach.ToLower()) &&
+                (string.IsNullOrEmpty(tel) || c.Tel.ToLower() == tel.ToLower()) &&
+                (string.IsNullOrEmpty(add) || c.Addrese.ToLower() == add.ToLower())
+            ).ToList();
+        }
+        
     }
 }

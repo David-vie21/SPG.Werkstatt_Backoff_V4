@@ -1,5 +1,5 @@
 ﻿//using DBI.MongoRepoGeneric;
-    using MongoDB.Driver;
+using MongoDB.Driver;
 using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
 using SPG.Werkstatt.Domian.MongoModels;
@@ -49,7 +49,7 @@ namespace Context_Test
 
 
         [Fact]
-        public void SeedTimeTest()
+        public void SeedTimeTest_Writings()
         {
 
             //user:pw@host
@@ -121,6 +121,72 @@ namespace Context_Test
             //   ts.Milliseconds / 10, ts.Milliseconds);
             //LogWriter.LogWrite("SeedTime x10000 (hh:mm:ss:ms:ns):" + elapsedTime);
             Assert.True(true);
+        }
+        [Fact]
+        public void SeedTimeTest_Readings()
+        {
+
+            //user:pw@host
+            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
+
+            //var database = new MongoClient(connectionString).GetDatabase(databaseName);
+            var werkstattMongoContext = new WerkstattMongoContext(connectionString, databaseName);
+            werkstattMongoContext.Seed(100);
+            Stopwatch stopwatch = new Stopwatch();
+            TimeSpan ts;
+            string elapsedTime = "";
+
+            LogWriter.LogWrite("Mongo:");
+
+
+            //x100 - Date
+            stopwatch.Start();
+
+            var day = werkstattMongoContext._dayCollection.Find(d => d.Date == new DateOnly(2023, 12, 1));
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo: Find Day (hh:mm:ss:ms:ns):" + elapsedTime);
+
+            //x100 - Termin
+            stopwatch.Start();
+
+            var termin = werkstattMongoContext._termineCollection.Find(d => d.Datetime.Date == new DateTime(2023, 12, 1));
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo: Find Termin (hh:mm:ss:ms:ns):" + elapsedTime);
+
+            //x100 - Customer
+            stopwatch.Start();
+
+            var customer = werkstattMongoContext._customerCollection.Find(d => d.Name.ToLower() == "david");
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo: Find Customer (hh:mm:ss:ms:ns):" + elapsedTime);
+
+            //x100 - Car
+            stopwatch.Start();
+
+            var car = werkstattMongoContext._carCollection.Find(d => d.Besitzer.Equals(customer));
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo: Find Car (hh:mm:ss:ms:ns):" + elapsedTime);
         }
     }
 

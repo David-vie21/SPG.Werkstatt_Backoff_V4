@@ -94,7 +94,7 @@ namespace SPG.Werkstatt.Domian
 
                 s.guid = f.Random.Guid();
                 s.Kunde = customers[f.Random.Number(0, customers.Count()-1)];
-                s.Datetime = f.Date.Between(new DateTime(2023, 12, 1), new DateTime(2023, 12, 10));
+                s.Datetime = f.Date.Between(new DateTime(2023, 12, 1), new DateTime(2023, 12, 10).AddDays(multi));
                 s.Auto = cars[f.Random.Number(0, cars.Count()-1)];
                 s.Summery = f.Lorem.Sentence();
                 s.accepted = f.Random.Bool();
@@ -109,7 +109,7 @@ namespace SPG.Werkstatt.Domian
             List<Day> days = new Faker<Day>("de")
                 .Rules((f, d) =>
                 {
-                    d.Date = new DateOnly(2023,12,f.Random.Number(1,10));
+                    d.Date = new DateOnly(2023,12,1).AddDays(f.Random.Number(1, 1 * multi));
                     d.Termine = termine.Where(t => new DateOnly(d.Date.Year, d.Date.Month, d.Date.Day) == new DateOnly(t.Datetime.Year, t.Datetime.Month, t.Datetime.Day)).ToList();
                 })
                 .Generate(10 * multi);

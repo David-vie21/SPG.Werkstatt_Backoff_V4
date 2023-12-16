@@ -33,3 +33,28 @@ Log Entry : 19:08:28 Samstag, 16. Dezember 2023
   :
   :SeedTime x1000 (hh:mm:ss:ms:ns):00:22:21.81.811
 -------------------------------
+
+Log Entry : 20:05:29 Samstag, 16. Dezember 2023
+  :
+  :Mongo:
+-------------------------------
+
+Log Entry : 20:05:29 Samstag, 16. Dezember 2023
+  :
+  :Mongo: Find Day (hh:mm:ss:ms:ns):00:00:00.00.02
+-------------------------------
+
+Log Entry : 20:05:29 Samstag, 16. Dezember 2023
+  :
+  :Mongo: Find Termin (hh:mm:ss:ms:ns):00:00:00.00.03
+-------------------------------
+
+Log Entry : 20:05:29 Samstag, 16. Dezember 2023
+  :
+  :Mongo: Find Customer (hh:mm:ss:ms:ns):00:00:00.00.03
+-------------------------------
+
+Log Entry : 20:05:29 Samstag, 16. Dezember 2023
+  :
+  :Mongo: Find Car (hh:mm:ss:ms:ns):00:00:00.00.03
+-------------------------------

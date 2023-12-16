@@ -34,27 +34,55 @@ Log Entry : 19:08:28 Samstag, 16. Dezember 2023
   :SeedTime x1000 (hh:mm:ss:ms:ns):00:22:21.81.811
 -------------------------------
 
-Log Entry : 20:05:29 Samstag, 16. Dezember 2023
+FINDS
+--------------------------------------------------------------
+
+Log Entry : 20:40:46 Samstag, 16. Dezember 2023
   :
-  :Mongo:
+  :Mongo - Find:
 -------------------------------
 
-Log Entry : 20:05:29 Samstag, 16. Dezember 2023
+Log Entry : 20:40:46 Samstag, 16. Dezember 2023
+  :
+  :Mongo: Find Termin without Filter (hh:mm:ss:ms:ns):00:00:00.00.01
+-------------------------------
+
+Log Entry : 20:40:46 Samstag, 16. Dezember 2023
   :
   :Mongo: Find Day (hh:mm:ss:ms:ns):00:00:00.00.02
 -------------------------------
 
-Log Entry : 20:05:29 Samstag, 16. Dezember 2023
+Log Entry : 20:40:46 Samstag, 16. Dezember 2023
   :
   :Mongo: Find Termin (hh:mm:ss:ms:ns):00:00:00.00.03
 -------------------------------
 
-Log Entry : 20:05:29 Samstag, 16. Dezember 2023
+Log Entry : 20:40:46 Samstag, 16. Dezember 2023
   :
   :Mongo: Find Customer (hh:mm:ss:ms:ns):00:00:00.00.03
 -------------------------------
 
-Log Entry : 20:05:29 Samstag, 16. Dezember 2023
+Log Entry : 20:40:46 Samstag, 16. Dezember 2023
   :
   :Mongo: Find Car (hh:mm:ss:ms:ns):00:00:00.00.03
+-------------------------------
+
+Log Entry : 20:40:48 Samstag, 16. Dezember 2023
+  :
+  :Mongo Find - Filter - Sort:
+-------------------------------
+
+Log Entry : 20:40:50 Samstag, 16. Dezember 2023
+  :
+  :Mongo: Find Termin  - Filter and Sort (hh:mm:ss:ms:ns):00:00:01.99.991
+-------------------------------
+
+Log Entry : 20:40:50 Samstag, 16. Dezember 2023
+  :
+  :Mongo: Find Termin  - Filter and Projekt (hh:mm:ss:ms:ns):00:00:02.00.06
+-------------------------------
+
+Log Entry : 20:40:50 Samstag, 16. Dezember 2023
+  :
+  :Mongo: Find Termin  - Filter, Projekt and Sort (hh:mm:ss:ms:ns):00:00:02.00.09
 -------------------------------

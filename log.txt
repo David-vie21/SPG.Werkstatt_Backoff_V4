@@ -65,3 +65,25 @@ Log Entry : 19:44:35 Samstag, 16. Dezember 2023
   :
   :SQL: SeedTime x10000 (hh:mm:ss:ms:ns):00:01:19.64.642
 -------------------------------
+
+
+
+Log Entry : 20:17:08 Samstag, 16. Dezember 2023
+  :
+  :SQL Read:
+-------------------------------
+
+Log Entry : 20:17:08 Samstag, 16. Dezember 2023
+  :
+  :SQL: Find Termin (hh:mm:ss:ms:ns):00:00:00.20.200
+-------------------------------
+
+Log Entry : 20:17:08 Samstag, 16. Dezember 2023
+  :
+  :SQL: Find Customer (hh:mm:ss:ms:ns):00:00:00.20.208
+-------------------------------
+
+Log Entry : 20:17:08 Samstag, 16. Dezember 2023
+  :
+  :SQL: Find Car (hh:mm:ss:ms:ns):00:00:00.21.215
+-------------------------------

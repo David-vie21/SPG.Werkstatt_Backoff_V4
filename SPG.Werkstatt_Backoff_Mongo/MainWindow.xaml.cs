@@ -284,8 +284,11 @@ namespace SPG.Werkstatt_Backoff_Mongo
 
         }
 
-        private void ButtonDEL_Click(object sender, RoutedEventArgs e)
+        private void ButtonDEL_Click(object sender, RoutedEventArgs e) //Refrech_TEXT_DEL
         {
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             try
             {
                 TerminMongo t1 = sender.GetType().GetProperty("DataContext").GetValue(sender, null) as TerminMongo;
@@ -310,11 +313,20 @@ namespace SPG.Werkstatt_Backoff_Mongo
                 TerminListe.ItemsSource = ((MainWindowViewModel)DataContext).selectC_changed();
                 TerminListe.Items.Refresh();
                 Console.WriteLine("Termin: " + t1.Id + " -DELETED");
+
+
+                TimeSpan ts = stopwatch.Elapsed;
+                string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                       ts.Hours, ts.Minutes, ts.Seconds,
+                       ts.Milliseconds / 10);
+                Console.WriteLine("RunTime " + elapsedTime);
+                Refrech_TEXT_DEL.Text = "Refrech Time(hh:mm:ss:ms): " + elapsedTime;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Somethink went wrong as the Del Part! " + ex);
             }
+
         }
 
         private void Button_Refrech(object sender, RoutedEventArgs e)

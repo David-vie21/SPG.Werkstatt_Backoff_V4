@@ -12,11 +12,11 @@ namespace Context_Test
     public class UnitTest1
     {
         [Fact]
-        public void Test1()
+        public void Create_DB_Test()
         {
             DbContextOptions options = new DbContextOptionsBuilder()
                 //.UseSqlite("Data Source= Werkstatt.db")
-                //.UseSqlite("Data Source= I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\SPG.Werkstatt_Backoff_V3\\Werkstatt.db")
+                //                .UseSqlServer("Server=dbi-sql-server.database.windows.net;Database=Werkstatt;Trusted_Connection=False;User ID=DBI.SQL;Password=admin!123;MultipleActiveResultSets=true")
                 .UseSqlServer("Server=dbi-sql-server.database.windows.net;Database=Werkstatt;Trusted_Connection=False;User ID=DBI.SQL;Password=admin!123;MultipleActiveResultSets=true")
                 .Options;
 
@@ -24,8 +24,8 @@ namespace Context_Test
             
             context.Database.EnsureDeleted();
             bool result = context.Database.EnsureCreated();
-            Assert.True(result);
-            context.Seed(1);
+            //Assert.True(result);
+            //context.Seed(1);
 
         }
 
@@ -34,12 +34,12 @@ namespace Context_Test
         {
 
 
-            LogWriter.LogWrite("SQL:");
+            LogWriter.LogWrite("Azure SQL:");
             execut(1);
             execut(10);
             execut(100);
             execut(1000);
-            execut(10000);
+            //execut(10000);
 
 
             
@@ -48,8 +48,9 @@ namespace Context_Test
         public void execut(int multi)
         {
             DbContextOptions options = new DbContextOptionsBuilder()
-               //.UseSqlite("Data Source= Werkstatt.db")
-               .UseSqlite("Data Source=Werkstatt.db")
+                               //.UseSqlite("Data Source= Werkstatt.db")
+                .UseSqlServer("Server=dbi-sql-server.database.windows.net;Database=Werkstatt;Trusted_Connection=False;User ID=DBI.SQL;Password=admin!123;MultipleActiveResultSets=true")
+
                .Options;
 
             WerkstattContext context = new WerkstattContext(options);
@@ -70,15 +71,15 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                ts.Hours, ts.Minutes, ts.Seconds,
                ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SQL: SeedTime x" + multi + " (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Azure SQL: SeedTime x" + multi + " (hh:mm:ss:ms:ns):" + elapsedTime);
         }
 
         [Fact]
         public void SpeedTest_Reading() 
         {
             DbContextOptions options = new DbContextOptionsBuilder()
-                    //.UseSqlite("Data Source= Werkstatt.db")
-                    .UseSqlite("Data Source= I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\SPG.Werkstatt_Backoff_V3\\Werkstatt.db")
+                    //.UseSqlite("Data Source= ")
+                .UseSqlServer("Server=dbi-sql-server.database.windows.net;Database=Werkstatt;Trusted_Connection=False;User ID=DBI.SQL;Password=admin!123;MultipleActiveResultSets=true")
                     .Options;
 
             WerkstattContext context = new WerkstattContext(options);
@@ -91,7 +92,7 @@ namespace Context_Test
             TimeSpan ts;
             string elapsedTime = "";
 
-            LogWriter.LogWrite("SQL Read:");
+            LogWriter.LogWrite("Azure SQL Read:");
 
 
             //x100 - Termin
@@ -104,7 +105,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SQL: Find Termin (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Azure SQL: Find Termin (hh:mm:ss:ms:ns):" + elapsedTime);
 
 
             //x100 - Customer
@@ -117,7 +118,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SQL: Find Customer (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Azure SQL: Find Customer (hh:mm:ss:ms:ns):" + elapsedTime);
 
             //x100 - Car
             stopwatch.Start();
@@ -129,14 +130,14 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SQL: Find Car (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Azure SQL: Find Car (hh:mm:ss:ms:ns):" + elapsedTime);
         }
 
         [Fact]
         public void TimeTest_Update_One_SQL()
         {
             DbContextOptions options = new DbContextOptionsBuilder()
-                .UseSqlite("Data Source= I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\SPG.Werkstatt_Backoff_V3\\Werkstatt.db")
+                                .UseSqlServer("Server=dbi-sql-server.database.windows.net;Database=Werkstatt;Trusted_Connection=False;User ID=DBI.SQL;Password=admin!123;MultipleActiveResultSets=true")
                 .Options;
 
             WerkstattContext context = new WerkstattContext(options);
@@ -149,7 +150,7 @@ namespace Context_Test
             TimeSpan ts;
             string elapsedTime = "";
 
-            LogWriter.LogWrite("SQL Update:");
+            LogWriter.LogWrite("Azure SQL Update:");
 
             // x100 - Termin Update 
             var termin = context.Termine.FirstOrDefault();
@@ -170,7 +171,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SQL: Update Termin (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Azure SQL: Update Termin (hh:mm:ss:ms:ns):" + elapsedTime);
 
             // x100 - Kunden Update 
             var customer = context.Customers.FirstOrDefault();
@@ -189,7 +190,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SQL: Update Kunde (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Azure SQL: Update Kunde (hh:mm:ss:ms:ns):" + elapsedTime);
 
             // x100 - Auto Update 
             var car = context.Cars.FirstOrDefault();
@@ -208,14 +209,14 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SQL: Update Auto (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Azure SQL: Update Auto (hh:mm:ss:ms:ns):" + elapsedTime);
         }
 
         [Fact]
         public void TimeTest_Delete_SQL()
         {
             DbContextOptions options = new DbContextOptionsBuilder()
-                .UseSqlite("Data Source= I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\SPG.Werkstatt_Backoff_V3\\Werkstatt.db")
+                .UseSqlServer("Server=dbi-sql-server.database.windows.net;Database=Werkstatt;Trusted_Connection=False;User ID=DBI.SQL;Password=admin!123;MultipleActiveResultSets=true")
                 .Options;
 
             WerkstattContext context = new WerkstattContext(options);
@@ -228,7 +229,7 @@ namespace Context_Test
             TimeSpan ts;
             string elapsedTime = "";
 
-            LogWriter.LogWrite("SQL Delete:");
+            LogWriter.LogWrite("Azure SQL Delete:");
 
             // x100 - Termin Delete  
             var termin = context.Termine.FirstOrDefault();
@@ -246,7 +247,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SQL: Delete Termin (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Azure SQL: Delete Termin (hh:mm:ss:ms:ns):" + elapsedTime);
 
             // x100 - Kunden Delete 
             var customer = context.Customers.FirstOrDefault();
@@ -264,7 +265,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SQL: Delete Kunde (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Azure SQL: Delete Kunde (hh:mm:ss:ms:ns):" + elapsedTime);
 
             // x100 - Auto Delete 
             var car = context.Cars.FirstOrDefault();
@@ -281,7 +282,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SQL: Delete Auto (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Azure SQL: Delete Auto (hh:mm:ss:ms:ns):" + elapsedTime);
         }
 
     }
@@ -289,16 +290,16 @@ namespace Context_Test
     public static class LogWriter
     {
         private static string m_exePath = string.Empty;
-        public static void LogWrite(string logMessage)
+        public static void LogWrite(string logMessage, string file = "logAzureSQL.txt")
         {
             //m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             m_exePath = "I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4";
-            if (!File.Exists(m_exePath + "\\" + "log.txt"))
-                File.Create(m_exePath + "\\" + "log.txt");
+            if (!File.Exists(m_exePath + "\\" + file))
+                File.Create(m_exePath + "\\" + file);
 
             try
             {
-                using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
+                using (StreamWriter w = File.AppendText(m_exePath + "\\" + file))
                     AppendLog(logMessage, w);
             }
             catch (Exception ex)

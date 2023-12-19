@@ -1,0 +1,15 @@
+
+Log Entry : 22:17:12 Dienstag, 19. Dezember 2023
+  :
+  :Azure SQL: Find Car (hh:mm:ss:ms:ns):00:00:03.12.123
+-------------------------------
+
+Log Entry : 22:17:12 Dienstag, 19. Dezember 2023
+  :
+  :Azure SQL:
+-------------------------------
+
+Log Entry : 22:22:05 Dienstag, 19. Dezember 2023
+  :
+  :Azure SQL:
+-------------------------------

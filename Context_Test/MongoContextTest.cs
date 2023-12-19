@@ -29,7 +29,7 @@ namespace Context_Test
             var werkstattMongoContext = new WerkstattMongoContext(connectionString, databaseName);
 
 
-            werkstattMongoContext.Seed(1);
+            werkstattMongoContext.Seed(10);
 
             Assert.True(werkstattMongoContext._dayCollection.CountDocuments(FilterDefinition<Day>.Empty) > 0);
             Assert.True(werkstattMongoContext._termineCollection.CountDocuments(FilterDefinition<TerminMongo>.Empty) > 0);

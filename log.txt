@@ -146,3 +146,88 @@ Log Entry : 17:27:38 Dienstag, 19. Dezember 2023
   :
   :Mongo: Delete Car (hh:mm:ss:ms:ns):00:00:00.18.180
 -------------------------------
+
+Log Entry : 18:27:49 Dienstag, 19. Dezember 2023
+  :
+  :Refrech Time (Load all Data) (hh:mm:ss:ms:ns):00:00:22.37.373
+-------------------------------
+
+Log Entry : 19:38:48 Dienstag, 19. Dezember 2023
+  :
+  :Refrech Time (Load all Data) (hh:mm:ss:ms:ns):00:00:00.03.38
+-------------------------------
+
+Log Entry : 19:40:52 Dienstag, 19. Dezember 2023
+  :
+  :Delete Time (hh:mm:ss:ms:ns):00:00:00.25.254
+-------------------------------
+
+Log Entry : 19:42:14 Dienstag, 19. Dezember 2023
+  :
+  :Update Time (hh:mm:ss:ms:ns):00:00:00.04.45
+-------------------------------
+
+Log Entry : 19:43:34 Dienstag, 19. Dezember 2023
+  :
+  :Update Time (hh:mm:ss:ms:ns):00:00:00.01.11
+-------------------------------
+
+Log Entry : 19:43:40 Dienstag, 19. Dezember 2023
+  :
+  :Update Time (hh:mm:ss:ms:ns):00:00:00.01.12
+-------------------------------
+
+Log Entry : 19:43:41 Dienstag, 19. Dezember 2023
+  :
+  :Update Time (hh:mm:ss:ms:ns):00:00:00.01.11
+-------------------------------
+
+Log Entry : 19:43:42 Dienstag, 19. Dezember 2023
+  :
+  :Update Time (hh:mm:ss:ms:ns):00:00:00.01.11
+-------------------------------
+
+Log Entry : 19:44:13 Dienstag, 19. Dezember 2023
+  :
+  :Update Time (hh:mm:ss:ms:ns):00:00:00.01.14
+-------------------------------
+
+Log Entry : 19:44:37 Dienstag, 19. Dezember 2023
+  :
+  :Update Time (hh:mm:ss:ms:ns):00:00:00.01.11
+-------------------------------
+
+Log Entry : 19:45:48 Dienstag, 19. Dezember 2023
+  :
+  :Update Time (hh:mm:ss:ms:ns):00:00:00.01.10
+-------------------------------
+
+Log Entry : 19:47:32 Dienstag, 19. Dezember 2023
+  :
+  :Filter Time (hh:mm:ss:ms:ns):00:00:00.00.07
+-------------------------------
+
+Log Entry : 19:47:46 Dienstag, 19. Dezember 2023
+  :
+  :Update Time (hh:mm:ss:ms:ns):00:00:00.01.11
+-------------------------------
+
+Log Entry : 19:47:52 Dienstag, 19. Dezember 2023
+  :
+  :Filter Time (hh:mm:ss:ms:ns):00:00:00.00.00
+-------------------------------
+
+Log Entry : 19:47:58 Dienstag, 19. Dezember 2023
+  :
+  :Filter Time (hh:mm:ss:ms:ns):00:00:00.00.00
+-------------------------------
+
+Log Entry : 19:48:11 Dienstag, 19. Dezember 2023
+  :
+  :Filter Time (hh:mm:ss:ms:ns):00:00:00.00.00
+-------------------------------
+
+Log Entry : 19:48:20 Dienstag, 19. Dezember 2023
+  :
+  :Filter Time (hh:mm:ss:ms:ns):00:00:00.00.06
+-------------------------------

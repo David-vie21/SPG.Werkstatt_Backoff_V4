@@ -106,3 +106,43 @@ Log Entry : 23:19:19 Samstag, 16. Dezember 2023
   :
   :SeedTime x10000 (hh:mm:ss.ms.ns):01:08:32.23.238
 -------------------------------
+
+Log Entry : 17:25:14 Dienstag, 19. Dezember 2023
+  :
+  :Mongo Update:
+-------------------------------
+
+Log Entry : 17:25:14 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Update Termin (hh:mm:ss:ms:ns):00:00:00.16.168
+-------------------------------
+
+Log Entry : 17:25:14 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Update Kunde (hh:mm:ss:ms:ns):00:00:00.17.176
+-------------------------------
+
+Log Entry : 17:25:14 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Update Car (hh:mm:ss:ms:ns):00:00:00.18.181
+-------------------------------
+
+Log Entry : 17:27:37 Dienstag, 19. Dezember 2023
+  :
+  :Mongo Delete:
+-------------------------------
+
+Log Entry : 17:27:38 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Delete Termin (hh:mm:ss:ms:ns):00:00:00.17.170
+-------------------------------
+
+Log Entry : 17:27:38 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Delete Kunde(hh:mm:ss:ms:ns):00:00:00.17.175
+-------------------------------
+
+Log Entry : 17:27:38 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Delete Car (hh:mm:ss:ms:ns):00:00:00.18.180
+-------------------------------

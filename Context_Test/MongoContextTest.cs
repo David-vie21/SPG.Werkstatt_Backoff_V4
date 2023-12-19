@@ -113,17 +113,17 @@ namespace Context_Test
             //LogWriter.LogWrite("SeedTime x1000 (hh:mm:ss:ms:ns):" + elapsedTime);
 
             //x10000
-            stopwatch.Start();
+            //stopwatch.Start();
 
-            werkstattMongoContext.Seed(10000);
+            //werkstattMongoContext.Seed(10000);
 
-            stopwatch.Stop();
-            ts = stopwatch.Elapsed;
-            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
-               ts.Hours, ts.Minutes, ts.Seconds,
-               ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("SeedTime x10000 (hh:mm:ss.ms.ns):" + elapsedTime);
-            Assert.True(true);
+            //stopwatch.Stop();
+            //ts = stopwatch.Elapsed;
+            //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+            //   ts.Hours, ts.Minutes, ts.Seconds,
+            //   ts.Milliseconds / 10, ts.Milliseconds);
+            //LogWriter.LogWrite("SeedTime x10000 (hh:mm:ss.ms.ns):" + elapsedTime);
+            //Assert.True(true);
         }
         [Fact]
         public void SeedTimeTest_Readings()
@@ -224,7 +224,7 @@ namespace Context_Test
             //x100 - Termin -- Filter and Sort 
             stopwatch.Start();
 
-            var termin = werkstattMongoContext._termineCollection.Find( t => t.accepted == true).SortBy(t => t.Kunde).ToList();
+            var termin = werkstattMongoContext._termineCollection.Find(t => t.accepted == true).SortBy(t => t.Kunde).ToList();
 
             stopwatch.Stop();
             ts = stopwatch.Elapsed;
@@ -235,7 +235,7 @@ namespace Context_Test
 
             //x100 - Termin -- Filter and Project
 
-            var filter = Builders<TerminMongo>.Filter.Eq(t => t.accepted,true);
+            var filter = Builders<TerminMongo>.Filter.Eq(t => t.accepted, true);
             var projection = Builders<TerminMongo>.Projection.Include(p => p.guid); //.Exclude(p => p.Auto)
             stopwatch.Start();
 
@@ -265,22 +265,150 @@ namespace Context_Test
                                             ts.Milliseconds / 10, ts.Milliseconds);
             LogWriter.LogWrite("Mongo: Find Termin  - Filter, Projekt and Sort (hh:mm:ss:ms:ns):" + elapsedTime);
         }
+
+        [Fact]
+        public void TimeTest_Update_One()
+        {
+            //user:pw@host
+            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
+
+            //var database = new MongoClient(connectionString).GetDatabase(databaseName);
+            var werkstattMongoContext = new WerkstattMongoContext(connectionString, databaseName);
+            werkstattMongoContext.Seed(100);
+            Stopwatch stopwatch = new Stopwatch();
+            TimeSpan ts;
+            string elapsedTime = "";
+
+            LogWriter.LogWrite("Mongo Update:");
+
+            
+            var termin = werkstattMongoContext._termineCollection.Find(FilterDefinition<TerminMongo>.Empty).First();
+            termin.accepted = true;
+            termin.guid = Guid.NewGuid();
+            termin.Datetime = DateTime.Now;
+
+            //x100 - Termin Update 
+            stopwatch.Start();
+
+            var terminResult = werkstattMongoContext._termineCollection.ReplaceOne(t => t.Id.Equals(termin.Id), termin);
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo: Update Termin (hh:mm:ss:ms:ns):" + elapsedTime);
+
+            //x100 - Kunde Update 
+            var customer = werkstattMongoContext._customerCollection.Find(FilterDefinition<CustomerMongo>.Empty).First();
+
+            stopwatch.Start();
+
+            var customerResult = werkstattMongoContext._customerCollection.ReplaceOne(t => t.Id.Equals(customer.Id), customer);
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo: Update Kunde (hh:mm:ss:ms:ns):" + elapsedTime);
+
+
+            //x100 - Car Update 
+            var car = werkstattMongoContext._carCollection.Find(FilterDefinition<CarMongo>.Empty).First();
+
+            stopwatch.Start();
+
+            var carResult = werkstattMongoContext._carCollection.ReplaceOne(t => t.Id.Equals(car.Id), car);
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo: Update Car (hh:mm:ss:ms:ns):" + elapsedTime);
+
+        }
+
+        [Fact]
+        public void TimeTest_Delete()
+        {
+            //user:pw@host
+            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
+
+            //var database = new MongoClient(connectionString).GetDatabase(databaseName);
+            var werkstattMongoContext = new WerkstattMongoContext(connectionString, databaseName);
+            werkstattMongoContext.Seed(100);
+            Stopwatch stopwatch = new Stopwatch();
+            TimeSpan ts;
+            string elapsedTime = "";
+
+            LogWriter.LogWrite("Mongo Delete:");
+
+
+            var termin = werkstattMongoContext._termineCollection.Find(FilterDefinition<TerminMongo>.Empty).First();
+
+
+            //x100 - Termin Delete  
+            stopwatch.Start();
+
+            var terminResult = werkstattMongoContext._termineCollection.DeleteOne(t => t.Id.Equals(termin.Id));
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo: Delete Termin (hh:mm:ss:ms:ns):" + elapsedTime);
+
+            //x100 - Kunde Delete 
+            var customer = werkstattMongoContext._customerCollection.Find(FilterDefinition<CustomerMongo>.Empty).First();
+
+            stopwatch.Start();
+
+            var customerResult = werkstattMongoContext._customerCollection.DeleteOne(t => t.Id.Equals(customer.Id));
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo: Delete Kunde(hh:mm:ss:ms:ns):" + elapsedTime);
+
+
+            //x100 - Car Delete 
+            var car = werkstattMongoContext._carCollection.Find(FilterDefinition<CarMongo>.Empty).First();
+
+            stopwatch.Start();
+
+            var carResult = werkstattMongoContext._carCollection.DeleteOne(t => t.Id.Equals(car.Id));
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo: Delete Car (hh:mm:ss:ms:ns):" + elapsedTime);
+
+        }
     }
 
     // Logging Class
     public static class LogWriter
     {
         private static string m_exePath = string.Empty;
-        public static void LogWrite(string logMessage)
+        public static void LogWrite(string logMessage, string logFileName = "log.txt")
         {
             //m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             m_exePath = "I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4";
-            if (!File.Exists(m_exePath + "\\" + "log.txt"))
-                File.Create(m_exePath + "\\" + "log.txt");
+            if (!File.Exists(m_exePath + "\\" + logFileName))
+                File.Create(m_exePath + "\\" + logFileName);
 
             try
             {
-                using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
+                using (StreamWriter w = File.AppendText(m_exePath + "\\" + logFileName))
                     AppendLog(logMessage, w);
             }
             catch (Exception ex)

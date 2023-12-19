@@ -1,0 +1,120 @@
+
+Log Entry : 20:06:05 Dienstag, 19. Dezember 2023
+  :
+  :Mongo - Find:
+-------------------------------
+
+Log Entry : 20:06:05 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Find Termin without Filter (hh:mm:ss:ms:ns):00:00:00.00.01
+-------------------------------
+
+Log Entry : 20:06:05 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Find Day (hh:mm:ss:ms:ns):00:00:00.00.02
+-------------------------------
+
+Log Entry : 20:06:05 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Find Termin (hh:mm:ss:ms:ns):00:00:00.00.02
+-------------------------------
+
+Log Entry : 20:06:05 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Find Customer (hh:mm:ss:ms:ns):00:00:00.00.03
+-------------------------------
+
+Log Entry : 20:06:05 Dienstag, 19. Dezember 2023
+  :
+  :Mongo: Find Car (hh:mm:ss:ms:ns):00:00:00.00.03
+-------------------------------
+
+Log Entry : 20:11:35 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo Find - Filter - Sort:
+-------------------------------
+
+Log Entry : 20:11:36 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo: Find Termin  - Filter and Sort (hh:mm:ss:ms:ns):00:00:00.77.775
+-------------------------------
+
+Log Entry : 20:11:36 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo: Find Termin  - Filter and Projekt (hh:mm:ss:ms:ns):00:00:00.86.860
+-------------------------------
+
+Log Entry : 20:11:36 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo: Find Termin  - Filter, Projekt and Sort (hh:mm:ss:ms:ns):00:00:00.90.907
+-------------------------------
+
+Log Entry : 20:13:00 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo Update:
+-------------------------------
+
+Log Entry : 20:13:00 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo: Update Termin (hh:mm:ss:ms:ns):00:00:00.34.341
+-------------------------------
+
+Log Entry : 20:13:00 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo: Update Kunde (hh:mm:ss:ms:ns):00:00:00.40.402
+-------------------------------
+
+Log Entry : 20:13:01 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo: Update Car (hh:mm:ss:ms:ns):00:00:00.46.466
+-------------------------------
+
+Log Entry : 20:14:06 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo Delete:
+-------------------------------
+
+Log Entry : 20:14:06 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo: Delete Termin (hh:mm:ss:ms:ns):00:00:00.18.184
+-------------------------------
+
+Log Entry : 20:14:07 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo: Delete Kunde(hh:mm:ss:ms:ns):00:00:00.25.253
+-------------------------------
+
+Log Entry : 20:14:07 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo: Delete Car (hh:mm:ss:ms:ns):00:00:00.32.323
+-------------------------------
+
+Log Entry : 20:15:16 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo - Find:
+-------------------------------
+
+Log Entry : 20:15:18 Dienstag, 19. Dezember 2023
+  :
+  :Atlas SeedTime x1 (hh:mm:ss.ms.ns):00:00:01.36.8
+-------------------------------
+
+Log Entry : 20:15:21 Dienstag, 19. Dezember 2023
+  :
+  :Atlas SeedTime x10 (hh:mm:ss:ms:ns):00:00:04.57.579
+-------------------------------
+
+Log Entry : 20:15:48 Dienstag, 19. Dezember 2023
+  :
+  :Atlas SeedTime x100 (hh:mm:ss:ms:ns):00:00:31.84.841
+-------------------------------
+
+Log Entry : 20:17:19 Dienstag, 19. Dezember 2023
+  :
+  :Atlas Mongo - Find:
+-------------------------------
+
+Log Entry : 20:21:47 Dienstag, 19. Dezember 2023
+  :
+  :Atlas SeedTime x1000 (hh:mm:ss:ms:ns):00:04:28.25.259
+-------------------------------

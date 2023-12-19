@@ -29,8 +29,12 @@ namespace SPG.Werkstatt.Domian
             //// Hole den Datenbanknamen aus der appsettings.json-Datei (optional)
             //string databaseName = configuration.GetSection("MongoSettings:DatabaseName").Value;
 
+            var settings = MongoClientSettings.FromConnectionString(ConnectionString);
+            // Set the ServerApi field of the settings object to Stable API version 1
+            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+
             // Setze die Verbindung zur MongoDB
-            var database = new MongoClient(ConnectionString).GetDatabase(DBName);
+            var database = new MongoClient(settings).GetDatabase(DBName);
 
 
             _database = database;

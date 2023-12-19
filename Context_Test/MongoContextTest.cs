@@ -18,11 +18,15 @@ namespace Context_Test
 {
     public class MongoContextTest
     {
+        const string connectionString = "mongodb+srv://admin:admin@mongodb.uv1uial.mongodb.net/?retryWrites=true&w=majority";
+
         [Fact]
         public void Test1()
         {
             //user:pw@host
-            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            //const string connectionUri = "Atlas Mongodb+srv://admin:admin@mongodb.uv1uial.mongodb.net/?retryWrites=true&w=majority";
+
+            //string connectionString = "Atlas Mongodb://root:1234@localhost:27017"; // Dein Connection String hier
             string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
 
             //var database = new MongoClient(connectionString).GetDatabase(databaseName);
@@ -54,7 +58,7 @@ namespace Context_Test
         {
 
             //user:pw@host
-            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            //string connectionString = "Atlas Mongodb://root:1234@localhost:27017"; // Dein Connection String hier
             string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
 
             //var database = new MongoClient(connectionString).GetDatabase(databaseName);
@@ -62,7 +66,8 @@ namespace Context_Test
             Stopwatch stopwatch = new Stopwatch();
             TimeSpan ts;
             string elapsedTime;
-            //x1
+            LogWriter.LogWrite("Atlas Mongo - Find:");
+            ////x1
 
             //stopwatch.Start();
 
@@ -72,8 +77,8 @@ namespace Context_Test
             //ts = stopwatch.Elapsed;
             //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
             //   ts.Hours, ts.Minutes, ts.Seconds,
-            //   ts.Milliseconds / 10, ts.Milliseconds.ToString().Substring(2),ts.Ticks);
-            //LogWriter.LogWrite("SeedTime x1 (hh:mm:ss.ms.ns):" + elapsedTime);
+            //   ts.Milliseconds / 10, ts.Milliseconds.ToString().Substring(2), ts.Ticks);
+            //LogWriter.LogWrite("Atlas SeedTime x1 (hh:mm:ss.ms.ns):" + elapsedTime);
 
             ////x10
             //stopwatch.Start();
@@ -85,7 +90,7 @@ namespace Context_Test
             //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
             //   ts.Hours, ts.Minutes, ts.Seconds,
             //   ts.Milliseconds / 10, ts.Milliseconds);
-            //LogWriter.LogWrite("SeedTime x10 (hh:mm:ss:ms:ns):" + elapsedTime);
+            //LogWriter.LogWrite("Atlas SeedTime x10 (hh:mm:ss:ms:ns):" + elapsedTime);
 
             ////x100
             //stopwatch.Start();
@@ -97,20 +102,20 @@ namespace Context_Test
             //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
             //   ts.Hours, ts.Minutes, ts.Seconds,
             //   ts.Milliseconds / 10, ts.Milliseconds);
-            //LogWriter.LogWrite("SeedTime x100 (hh:mm:ss:ms:ns):" + elapsedTime);
+            //LogWriter.LogWrite("Atlas SeedTime x100 (hh:mm:ss:ms:ns):" + elapsedTime);
 
 
-            ////x1000
-            //stopwatch.Start();
+            //x1000
+            stopwatch.Start();
 
-            //werkstattMongoContext.Seed(1000);
+            werkstattMongoContext.Seed(1000);
 
-            //stopwatch.Stop();
-            //ts = stopwatch.Elapsed;
-            //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
-            //   ts.Hours, ts.Minutes, ts.Seconds,
-            //   ts.Milliseconds / 10, ts.Milliseconds);
-            //LogWriter.LogWrite("SeedTime x1000 (hh:mm:ss:ms:ns):" + elapsedTime);
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+               ts.Hours, ts.Minutes, ts.Seconds,
+               ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Atlas SeedTime x1000 (hh:mm:ss:ms:ns):" + elapsedTime);
 
             //x10000
             //stopwatch.Start();
@@ -122,7 +127,7 @@ namespace Context_Test
             //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
             //   ts.Hours, ts.Minutes, ts.Seconds,
             //   ts.Milliseconds / 10, ts.Milliseconds);
-            //LogWriter.LogWrite("SeedTime x10000 (hh:mm:ss.ms.ns):" + elapsedTime);
+            //LogWriter.LogWrite("Atlas SeedTime x10000 (hh:mm:ss.ms.ns):" + elapsedTime);
             //Assert.True(true);
         }
         [Fact]
@@ -130,7 +135,7 @@ namespace Context_Test
         {
 
             //user:pw@host
-            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            //string connectionString = "Atlas Mongodb://root:1234@localhost:27017"; // Dein Connection String hier
             string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
 
             //var database = new MongoClient(connectionString).GetDatabase(databaseName);
@@ -140,7 +145,7 @@ namespace Context_Test
             TimeSpan ts;
             string elapsedTime = "";
 
-            LogWriter.LogWrite("Mongo - Find:");
+            LogWriter.LogWrite("Atlas Mongo - Find:");
 
             //x100 - Termin without Filter
             stopwatch.Start();
@@ -152,7 +157,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Find Termin without Filter (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Find Termin without Filter (hh:mm:ss:ms:ns):" + elapsedTime);
 
 
             //x100 - Date
@@ -165,7 +170,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Find Day (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Find Day (hh:mm:ss:ms:ns):" + elapsedTime);
 
             //x100 - Termin
             stopwatch.Start();
@@ -177,7 +182,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Find Termin (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Find Termin (hh:mm:ss:ms:ns):" + elapsedTime);
 
             //x100 - Customer
             stopwatch.Start();
@@ -189,7 +194,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Find Customer (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Find Customer (hh:mm:ss:ms:ns):" + elapsedTime);
 
             //x100 - Car
             stopwatch.Start();
@@ -201,7 +206,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Find Car (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Find Car (hh:mm:ss:ms:ns):" + elapsedTime);
         }
 
         [Fact]
@@ -209,7 +214,7 @@ namespace Context_Test
         {
 
             //user:pw@host
-            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            //string connectionString = "Atlas Mongodb://root:1234@localhost:27017"; // Dein Connection String hier
             string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
 
             //var database = new MongoClient(connectionString).GetDatabase(databaseName);
@@ -219,7 +224,7 @@ namespace Context_Test
             TimeSpan ts;
             string elapsedTime = "";
 
-            LogWriter.LogWrite("Mongo Find - Filter - Sort:");
+            LogWriter.LogWrite("Atlas Mongo Find - Filter - Sort:");
 
             //x100 - Termin -- Filter and Sort 
             stopwatch.Start();
@@ -231,7 +236,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Find Termin  - Filter and Sort (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Find Termin  - Filter and Sort (hh:mm:ss:ms:ns):" + elapsedTime);
 
             //x100 - Termin -- Filter and Project
 
@@ -247,7 +252,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Find Termin  - Filter and Projekt (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Find Termin  - Filter and Projekt (hh:mm:ss:ms:ns):" + elapsedTime);
 
             //x100 - Termin -- Filter, Project and Sort
 
@@ -263,14 +268,14 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Find Termin  - Filter, Projekt and Sort (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Find Termin  - Filter, Projekt and Sort (hh:mm:ss:ms:ns):" + elapsedTime);
         }
 
         [Fact]
         public void TimeTest_Update_One()
         {
             //user:pw@host
-            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            //string connectionString = "Atlas Mongodb://root:1234@localhost:27017"; // Dein Connection String hier
             string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
 
             //var database = new MongoClient(connectionString).GetDatabase(databaseName);
@@ -280,7 +285,7 @@ namespace Context_Test
             TimeSpan ts;
             string elapsedTime = "";
 
-            LogWriter.LogWrite("Mongo Update:");
+            LogWriter.LogWrite("Atlas Mongo Update:");
 
             
             var termin = werkstattMongoContext._termineCollection.Find(FilterDefinition<TerminMongo>.Empty).First();
@@ -298,7 +303,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Update Termin (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Update Termin (hh:mm:ss:ms:ns):" + elapsedTime);
 
             //x100 - Kunde Update 
             var customer = werkstattMongoContext._customerCollection.Find(FilterDefinition<CustomerMongo>.Empty).First();
@@ -312,7 +317,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Update Kunde (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Update Kunde (hh:mm:ss:ms:ns):" + elapsedTime);
 
 
             //x100 - Car Update 
@@ -327,7 +332,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Update Car (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Update Car (hh:mm:ss:ms:ns):" + elapsedTime);
 
         }
 
@@ -335,7 +340,7 @@ namespace Context_Test
         public void TimeTest_Delete()
         {
             //user:pw@host
-            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            //string connectionString = "Atlas Mongodb://root:1234@localhost:27017"; // Dein Connection String hier
             string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
 
             //var database = new MongoClient(connectionString).GetDatabase(databaseName);
@@ -345,7 +350,7 @@ namespace Context_Test
             TimeSpan ts;
             string elapsedTime = "";
 
-            LogWriter.LogWrite("Mongo Delete:");
+            LogWriter.LogWrite("Atlas Mongo Delete:");
 
 
             var termin = werkstattMongoContext._termineCollection.Find(FilterDefinition<TerminMongo>.Empty).First();
@@ -361,7 +366,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Delete Termin (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Delete Termin (hh:mm:ss:ms:ns):" + elapsedTime);
 
             //x100 - Kunde Delete 
             var customer = werkstattMongoContext._customerCollection.Find(FilterDefinition<CustomerMongo>.Empty).First();
@@ -375,7 +380,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Delete Kunde(hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Delete Kunde(hh:mm:ss:ms:ns):" + elapsedTime);
 
 
             //x100 - Car Delete 
@@ -390,7 +395,7 @@ namespace Context_Test
             elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
                               ts.Hours, ts.Minutes, ts.Seconds,
                                             ts.Milliseconds / 10, ts.Milliseconds);
-            LogWriter.LogWrite("Mongo: Delete Car (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Atlas Mongo: Delete Car (hh:mm:ss:ms:ns):" + elapsedTime);
 
         }
     }
@@ -399,7 +404,7 @@ namespace Context_Test
     public static class LogWriter
     {
         private static string m_exePath = string.Empty;
-        public static void LogWrite(string logMessage, string logFileName = "log.txt")
+        public static void LogWrite(string logMessage, string logFileName = "logAtlas.txt")
         {
             //m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             m_exePath = "I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4";

@@ -86,7 +86,7 @@ namespace Context_Test
 
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
-            context.Seed(100);
+            context.Seed(1);
 
             Stopwatch stopwatch = new Stopwatch();
             TimeSpan ts;

@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 //using Microsoft.EntityFrameworkCore.SQLServer;
 using SPG.Werkstatt.Domian.Model;
 using System;
@@ -30,9 +31,10 @@ namespace SPG.Werkstatt.Domian
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseSqlite("Data Source= Werkstatt.db");
-                //optionsBuilder.UseSqlite("Data Source= I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\SPG.Werkstatt_Backoff_V3\\Werkstatt.db");
-               //optionsBuilder.UseSqlServer("Server=dbi-sql-server.database.windows.net;Database=Werkstatt;Trusted_Connection=False;User ID=DBI.SQL;Password=admin!123;MultipleActiveResultSets=true");
+                optionsBuilder
+                .UseSqlServer("Server=dbi-sql-server.database.windows.net;Database=Werkstatt;Trusted_Connection=False;User ID=DBI.SQL;Password=admin!123;MultipleActiveResultSets=true",
+                options => options.CommandTimeout(180)); // 180 seconds = 3 minutes
+                //optionsBuilder.UseSqlServer("Server=dbi-sql-server.database.windows.net;Database=Werkstatt;Trusted_Connection=False;User ID=DBI.SQL;Password=admin!123;MultipleActiveResultSets=true");
             }
         }
 

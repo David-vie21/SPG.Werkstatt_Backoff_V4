@@ -1,5 +1,6 @@
 ﻿//using DBI.MongoRepoGeneric;
 using Bogus;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using SPG.Werkstatt.Domian;
 using SPG.Werkstatt.Domian.Model;
@@ -393,6 +394,51 @@ namespace Context_Test
             LogWriter.LogWrite("Mongo: Delete Car (hh:mm:ss:ms:ns):" + elapsedTime);
 
         }
+
+        [Fact]
+        public void SeedTimeTest_Readings_Aggregation()
+        {
+
+            //user:pw@host
+            string connectionString = "mongodb://root:1234@localhost:27017"; // Dein Connection String hier
+            string databaseName = "WerkstattDB"; // Der Name deiner Datenbank
+
+            //var database = new MongoClient(connectionString).GetDatabase(databaseName);
+            var werkstattMongoContext = new WerkstattMongoContext(connectionString, databaseName);
+            werkstattMongoContext.Seed(100);
+            Stopwatch stopwatch = new Stopwatch();
+            TimeSpan ts;
+            string elapsedTime = "";
+
+            LogWriter.LogWrite("Mongo Aggregation - How much termins has every Customer:");
+
+            //x100 - Termin without Filter
+            var termin = werkstattMongoContext._termineCollection.Find(FilterDefinition<TerminMongo>.Empty).First();
+            var index = termin.Id;
+            var aggregationPipeline = new List<BsonDocument>
+                {
+                    //BsonDocument.Parse("{ $match: { _id: "+ index+" } }"),
+                    //BsonDocument.Parse("{ $group: { _id: '$category', total: { $sum: '$amount' } } }") // Beispiel für $group-Operation
+                    BsonDocument.Parse("{ $group: { _id: '$Kunde._Id', total: { $sum: 1 } } }")
+
+                };
+
+            stopwatch.Start();
+
+            var terminResult = werkstattMongoContext._termineCollection.Aggregate<BsonDocument>(aggregationPipeline);
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):" + elapsedTime);
+            LogWriter.LogWrite("Mongo Aggregation Result" + terminResult.ToString());
+
+
+
+        }
+
     }
 
     // Logging Class

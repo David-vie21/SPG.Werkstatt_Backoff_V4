@@ -231,3 +231,29 @@ Log Entry : 19:48:20 Dienstag, 19. Dezember 2023
   :
   :Filter Time (hh:mm:ss:ms:ns):00:00:00.00.06
 -------------------------------
+
+Log Entry : 16:00:27 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 16:00:27 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin(hh:mm:ss:ms:ns):00:00:00.09.90
+-------------------------------
+
+Log Entry : 16:02:47 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 16:02:47 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.04.42
+-------------------------------
+
+
+Log Entry : 16:03:30 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------

@@ -10,7 +10,9 @@ namespace SPG.Werkstatt.Domian.MongoModels
 {
     [BsonCollection("Day")]
     public class Day : Document
+
     {
+        public int Index { get; set; }
         public DateOnly Date { get; set; }
         public List<TerminMongo> Termine { get; set; }
     }

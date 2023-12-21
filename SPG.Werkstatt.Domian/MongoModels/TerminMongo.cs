@@ -13,7 +13,7 @@ namespace SPG.Werkstatt.Domian.MongoModels
     public class TerminMongo : Document
     {
 
-        //public int Id { get; set; }
+        public int Index { get; set; }
         public Guid guid { get; set; }
 
         public CustomerMongo Kunde { get; set; }

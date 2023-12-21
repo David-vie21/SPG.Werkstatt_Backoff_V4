@@ -13,7 +13,7 @@ namespace SPG.Werkstatt.Domian.Model
 
     public class CarMongo : Document
     {
-        //public int Id { get; set; }
+        public int Index { get; set; }
         public Guid guid { get; set; }
 
         public string Marke { get; set; }

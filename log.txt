@@ -231,3 +231,68 @@ Log Entry : 19:48:20 Dienstag, 19. Dezember 2023
   :
   :Filter Time (hh:mm:ss:ms:ns):00:00:00.00.06
 -------------------------------
+
+Log Entry : 15:35:55 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Index - Find:
+-------------------------------
+
+Log Entry : 15:35:55 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo - Index: Find Termin without Filter (hh:mm:ss:ms:ns):00:00:00.00.02
+-------------------------------
+
+Log Entry : 15:35:55 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Index: Find Day (hh:mm:ss:ms:ns):00:00:00.00.04
+-------------------------------
+
+Log Entry : 15:35:55 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Index: Find Termin (hh:mm:ss:ms:ns):00:00:00.00.04
+-------------------------------
+
+Log Entry : 15:35:55 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Index: Find Customer (hh:mm:ss:ms:ns):00:00:00.00.05
+-------------------------------
+
+Log Entry : 15:35:55 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Index: Find Customer only Index (hh:mm:ss:ms:ns):00:00:00.00.05
+-------------------------------
+
+Log Entry : 15:35:55 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo Index: Find Car (hh:mm:ss:ms:ns):00:00:00.00.05
+-------------------------------
+
+Log Entry : 15:38:45 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo - Find:
+-------------------------------
+
+Log Entry : 15:38:45 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo: Find Termin without Filter (hh:mm:ss:ms:ns):00:00:00.00.02
+-------------------------------
+
+Log Entry : 15:38:45 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo: Find Day (hh:mm:ss:ms:ns):00:00:00.00.03
+-------------------------------
+
+Log Entry : 15:38:45 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo: Find Termin (hh:mm:ss:ms:ns):00:00:00.00.04
+-------------------------------
+
+Log Entry : 15:38:45 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo: Find Customer (hh:mm:ss:ms:ns):00:00:00.00.04
+-------------------------------
+
+Log Entry : 15:38:45 Donnerstag, 21. Dezember 2023
+  :
+  :Mongo: Find Car (hh:mm:ss:ms:ns):00:00:00.00.05
+-------------------------------

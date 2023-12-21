@@ -12,7 +12,7 @@ namespace SPG.Werkstatt.Domian.Model
 
     public class CustomerMongo : Document
     {
-        //public int Id { get; set; }
+        public int Index { get; set; }
         public Guid guid { get; set; }
         public string Vorname { get; set; }
         public string Nachname { get; set; }

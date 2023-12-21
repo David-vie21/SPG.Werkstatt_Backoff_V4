@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
@@ -10,7 +11,7 @@ using System.Linq;
 
 namespace SPG.Werkstatt.Domian
 {
-    public class WerkstattMongoContext
+    public class WerkstattMongoContext : DbContext
     {
         private readonly IMongoDatabase _database;
 
@@ -46,6 +47,31 @@ namespace SPG.Werkstatt.Domian
             _dayCollection = _database.GetCollection<Day>("Day");
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Day>(entity =>
+            {
+                entity.HasIndex(e => e.Index)
+                      .IsUnique();
+            });
+            modelBuilder.Entity<TerminMongo>(entity =>
+            {
+                entity.HasIndex(e => e.Index)
+                      .IsUnique();
+            });
+            modelBuilder.Entity<CustomerMongo>(entity =>
+            {
+                entity.HasIndex(e => e.Index)
+                      .IsUnique();
+            });
+            modelBuilder.Entity<CarMongo>(entity =>
+            {
+                entity.HasIndex(e => e.Index)
+                      .IsUnique();
+            });
+        }
+
 
         // Methode zum Hinzufügen von Testdaten in MongoDB
         public void Seed(int multi)

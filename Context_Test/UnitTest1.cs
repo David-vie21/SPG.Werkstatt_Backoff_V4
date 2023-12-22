@@ -6,6 +6,9 @@ using SPG.Werkstatt.Domian.Model;
 using System.IO;
 using System.Diagnostics;
 using System.Linq;
+using MongoDB.Bson;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Context_Test
 {
@@ -282,6 +285,60 @@ namespace Context_Test
                 ts.Milliseconds / 10, ts.Milliseconds);
             LogWriter.LogWrite("SQL: Delete Auto (hh:mm:ss:ms:ns):" + elapsedTime);
         }
+
+
+        [Fact]
+        public void SeedTimeTest_Readings_Aggregation()
+        {
+
+            DbContextOptions options = new DbContextOptionsBuilder()
+                .UseSqlite("Data Source= I:\\Dokumente 4TB\\HTL\\5 Klasse\\DBI\\Projekt\\SPG.Werkstatt_Backoff_V4\\SPG.Werkstatt_Backoff_V3\\Werkstatt.db")
+                .Options;
+
+            WerkstattContext context = new WerkstattContext(options);
+
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+
+            //DropCollection(werkstattMongoContext);
+            context.Seed_with_Aggregation(1);
+            Stopwatch stopwatch = new Stopwatch();
+            TimeSpan ts;
+            string elapsedTime = "";
+
+            LogWriter.LogWrite("SQL Aggregation - How much termins has every Customer:");
+
+            //x100 - Termin without Filter
+
+
+            stopwatch.Start();
+
+            var termineResult = context.Termine
+                .GroupBy(t => t.Kunde.guid)
+                    .Select(g => new
+                    {
+                        CustomerId = g.Key,
+                        TotalTermine = g.Count()
+                    })
+                    .ToList();
+
+            stopwatch.Stop();
+            ts = stopwatch.Elapsed;
+            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}.{4:00}",
+                              ts.Hours, ts.Minutes, ts.Seconds,
+                                            ts.Milliseconds / 10, ts.Milliseconds);
+            LogWriter.LogWrite("SQL Aggregation: Count Termin per Customer (hh:mm:ss:ms:ns):" + elapsedTime);
+            var result = new StringBuilder();
+
+            foreach (var item in termineResult)
+            {
+                result.Append(item.ToString().Replace("CSUUID", ""));
+            }
+            LogWriter.LogWrite("SQL Aggregation Result" + result.ToString());
+        }
+
+
+
 
     }
 

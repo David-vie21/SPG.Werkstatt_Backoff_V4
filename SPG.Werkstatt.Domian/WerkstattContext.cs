@@ -112,9 +112,69 @@ namespace SPG.Werkstatt.Domian
             .ToList();
             Termine.AddRange(termine);
             SaveChanges();
+        }
+
+        public void Seed_with_Aggregation(int multi)
+        {
+            Randomizer.Seed = new Random(1017);
+            List<Customer> customers = new Faker<Customer>("de")
+               .Rules((f, c) =>
+               {
+                   c.guid = f.Random.Guid();
+                   c.Vorname = f.Name.FirstName(Bogus.DataSets.Name.Gender.Female);
+                   c.Nachname = f.Name.LastName();
+                   c.Email = f.Internet.Email();
+                   c.Tel = f.Person.Phone;
+                   c.Addrese = f.Address.FullAddress();
+
+               })
+           .Generate(100 * multi)
+           .ToList();
+           Customers.AddRange(customers);
+           SaveChanges();
 
 
+            List<Car> cars = new Faker<Car>("de")
+                .Rules((f, c) =>
+                {
+                    c.guid = f.Random.Guid();
+                    c.Besitzer = customers[f.Random.Number(0, customers.Count() - 1)];
+                    c.Marke = f.Company.CompanyName();
+                    c.Modell = f.Commerce.ProductName();
+                    c.Kennzeichen = f.Random.Replace("W##-###");
+                    c.Erstzulassung = f.Date.Past(10, DateTime.Now);
+                    c.Kw = f.Random.Decimal(60, 500);
+
+                })
+                .Generate(10 * multi);
+            Cars.AddRange(cars);
+            SaveChanges();
+
+            List<Termin> termine = new Faker<Termin>().Rules((f, s) =>
+            {
+                //         public Customer Kunde { get; set; }
+                //public DateTime Datetime { get; set; }
+                //public Car Auto { get; set; }
+                //public string Summery { get; set; }
+                //public string Date { get { return Datetime.ToShortDateString(); } }
+                //public string Time { get { return Datetime.TimeOfDay.ToString(); } }
+                //public bool accepted { get; set; }
+                //public bool IsDone { get; set; }
+
+                s.guid = f.Random.Guid();
+                s.Kunde = customers[f.Random.Number(0, customers.Count() - 1)];
+                s.Datetime = f.Date.Between(new DateTime(2023, 12, 1), new DateTime(2023, 12, 10).AddDays(multi));
+                s.Auto = cars[f.Random.Number(0, cars.Count() - 1)];
+                s.Summery = f.Lorem.Sentence();
+                s.accepted = f.Random.Bool();
+                s.IsDone = f.Random.Bool();
+            })
+            .Generate(20 * multi)
+            .ToList();
+            Termine.AddRange(termine);
+            SaveChanges();
 
         }
+
     }
 }

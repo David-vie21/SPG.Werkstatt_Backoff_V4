@@ -127,3 +127,18 @@ Log Entry : 17:40:22 Dienstag, 19. Dezember 2023
   :
   :SQL: Update Auto (hh:mm:ss:ms:ns):00:00:00.13.139
 -------------------------------
+
+Log Entry : 13:27:27 Freitag, 22. Dezember 2023
+  :
+  :SQL Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 13:27:27 Freitag, 22. Dezember 2023
+  :
+  :SQL Aggregation: Count Termin per Customer (hh:mm:ss:ms:ns):00:00:00.44.442
+-------------------------------
+
+Log Entry : 13:27:27 Freitag, 22. Dezember 2023
+  :
+  :SQL Aggregation Result{ CustomerId = 01ad2905-f1a8-d16e-bda7-1ed4878ba394, TotalTermine = 1 }{ CustomerId = 09ed1bfc-7d49-13ea-a281-1c68f086a30b, TotalTermine = 1 }{ CustomerId = 1169bfb3-8a8f-d6b2-87ec-16f7d52d9b20, TotalTermine = 1 }{ CustomerId = 1e86fefb-305f-dd4f-cf4a-4dec49ff72ef, TotalTermine = 3 }{ CustomerId = 32ebf813-a251-2efb-6ae8-d18feab14f2a, TotalTermine = 1 }{ CustomerId = 402b646f-cddf-9000-4ea8-7e2723d14672, TotalTermine = 1 }{ CustomerId = 4092f1b1-cd00-2ab6-b17d-d0ae74be2044, TotalTermine = 1 }{ CustomerId = 5691d9cf-adde-b816-e9c1-15ffdc86ebab, TotalTermine = 1 }{ CustomerId = 88355105-be3d-5eeb-d56f-bff820879978, TotalTermine = 1 }{ CustomerId = aa52f637-9430-4d26-f8d8-0d8f2eb85eeb, TotalTermine = 1 }{ CustomerId = b189de4b-4d48-43d5-d410-2b5533a0b2e3, TotalTermine = 1 }{ CustomerId = b66b4720-4e6c-8750-f488-fd18a48fd363, TotalTermine = 1 }{ CustomerId = c6dd0bda-11f6-b510-7f2f-9ed10ed3f40a, TotalTermine = 1 }{ CustomerId = ca44b26e-6121-a3ed-2d4d-597970e7cbae, TotalTermine = 1 }{ CustomerId = d75e999b-1a03-ace6-9ffe-e7d81718fb9a, TotalTermine = 1 }{ CustomerId = e3c35215-70dc-269c-712b-0854fce83f59, TotalTermine = 1 }{ CustomerId = fa3cd603-26e9-e4a7-7fd3-ab13edb8ae54, TotalTermine = 1 }{ CustomerId = fdf4c267-716c-29d6-97e7-d7b98df41f72, TotalTermine = 1 }
+-------------------------------

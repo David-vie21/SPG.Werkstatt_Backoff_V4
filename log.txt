@@ -252,8 +252,227 @@ Log Entry : 16:02:47 Donnerstag, 21. Dezember 2023
   :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.04.42
 -------------------------------
 
-
-Log Entry : 16:03:30 Donnerstag, 21. Dezember 2023
+Log Entry : 12:21:30 Freitag, 22. Dezember 2023
   :
   :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:21:30 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.08.84
+-------------------------------
+
+Log Entry : 12:21:30 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "_id" : null, "total" : 10259 }
+-------------------------------
+
+Log Entry : 12:22:10 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:22:52 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:36.65.656
+-------------------------------
+
+Log Entry : 12:23:06 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "_id" : null, "total" : 10269 }
+-------------------------------
+
+Log Entry : 12:32:18 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:32:19 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.02.26
+-------------------------------
+
+Log Entry : 12:32:19 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "_id" : null, "total" : 20 }
+-------------------------------
+
+Log Entry : 12:37:32 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:37:32 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.03.38
+-------------------------------
+
+Log Entry : 12:37:32 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "total" : 40, "customerId" : null }
+-------------------------------
+
+Log Entry : 12:41:59 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:41:59 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.03.30
+-------------------------------
+
+Log Entry : 12:41:59 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "totalTermine" : 60, "customerId" : null }
+-------------------------------
+
+Log Entry : 12:43:13 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:43:13 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.02.26
+-------------------------------
+
+Log Entry : 12:43:13 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "totalTermine" : 80, "customerId" : null }
+-------------------------------
+
+Log Entry : 12:44:15 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:44:15 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.03.34
+-------------------------------
+
+Log Entry : 12:44:15 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result
+-------------------------------
+
+Log Entry : 12:46:27 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:46:27 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.03.30
+-------------------------------
+
+Log Entry : 12:46:28 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result
+-------------------------------
+
+Log Entry : 12:47:28 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:47:28 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.03.34
+-------------------------------
+
+Log Entry : 12:47:28 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "totalTermine" : 140, "customerId" : null }
+-------------------------------
+
+Log Entry : 12:52:17 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:52:17 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.02.24
+-------------------------------
+
+Log Entry : 12:52:17 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "totalTermine" : 20, "customerId" : null }
+-------------------------------
+
+Log Entry : 12:53:17 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:53:17 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.02.22
+-------------------------------
+
+Log Entry : 12:53:17 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "totalTermine" : 2, "customerId" : CSUUID("88355105-be3d-5eeb-d56f-bff820879978") }{ "totalTermine" : 2, "customerId" : CSUUID("402b646f-cddf-9000-4ea8-7e2723d14672") }{ "totalTermine" : 2, "customerId" : CSUUID("b189de4b-4d48-43d5-d410-2b5533a0b2e3") }{ "totalTermine" : 2, "customerId" : CSUUID("fdf4c267-716c-29d6-97e7-d7b98df41f72") }{ "totalTermine" : 2, "customerId" : CSUUID("b66b4720-4e6c-8750-f488-fd18a48fd363") }{ "totalTermine" : 2, "customerId" : CSUUID("01ad2905-f1a8-d16e-bda7-1ed4878ba394") }{ "totalTermine" : 2, "customerId" : CSUUID("e3c35215-70dc-269c-712b-0854fce83f59") }{ "totalTermine" : 2, "customerId" : CSUUID("1169bfb3-8a8f-d6b2-87ec-16f7d52d9b20") }{ "totalTermine" : 2, "customerId" : CSUUID("ca44b26e-6121-a3ed-2d4d-597970e7cbae") }{ "totalTermine" : 2, "customerId" : CSUUID("d75e999b-1a03-ace6-9ffe-e7d81718fb9a") }{ "totalTermine" : 2, "customerId" : CSUUID("5691d9cf-adde-b816-e9c1-15ffdc86ebab") }{ "totalTermine" : 2, "customerId" : CSUUID("fa3cd603-26e9-e4a7-7fd3-ab13edb8ae54") }{ "totalTermine" : 2, "customerId" : CSUUID("4092f1b1-cd00-2ab6-b17d-d0ae74be2044") }{ "totalTermine" : 2, "customerId" : CSUUID("aa52f637-9430-4d26-f8d8-0d8f2eb85eeb") }{ "totalTermine" : 2, "customerId" : CSUUID("c6dd0bda-11f6-b510-7f2f-9ed10ed3f40a") }{ "totalTermine" : 2, "customerId" : CSUUID("32ebf813-a251-2efb-6ae8-d18feab14f2a") }{ "totalTermine" : 2, "customerId" : CSUUID("09ed1bfc-7d49-13ea-a281-1c68f086a30b") }{ "totalTermine" : 6, "customerId" : CSUUID("1e86fefb-305f-dd4f-cf4a-4dec49ff72ef") }
+-------------------------------
+
+Log Entry : 12:53:34 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:53:34 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.04.40
+-------------------------------
+
+Log Entry : 12:53:34 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "totalTermine" : 3, "customerId" : CSUUID("ca44b26e-6121-a3ed-2d4d-597970e7cbae") }{ "totalTermine" : 3, "customerId" : CSUUID("4092f1b1-cd00-2ab6-b17d-d0ae74be2044") }{ "totalTermine" : 3, "customerId" : CSUUID("5691d9cf-adde-b816-e9c1-15ffdc86ebab") }{ "totalTermine" : 3, "customerId" : CSUUID("fa3cd603-26e9-e4a7-7fd3-ab13edb8ae54") }{ "totalTermine" : 3, "customerId" : CSUUID("09ed1bfc-7d49-13ea-a281-1c68f086a30b") }{ "totalTermine" : 9, "customerId" : CSUUID("1e86fefb-305f-dd4f-cf4a-4dec49ff72ef") }{ "totalTermine" : 3, "customerId" : CSUUID("01ad2905-f1a8-d16e-bda7-1ed4878ba394") }{ "totalTermine" : 3, "customerId" : CSUUID("aa52f637-9430-4d26-f8d8-0d8f2eb85eeb") }{ "totalTermine" : 3, "customerId" : CSUUID("c6dd0bda-11f6-b510-7f2f-9ed10ed3f40a") }{ "totalTermine" : 3, "customerId" : CSUUID("32ebf813-a251-2efb-6ae8-d18feab14f2a") }{ "totalTermine" : 3, "customerId" : CSUUID("e3c35215-70dc-269c-712b-0854fce83f59") }{ "totalTermine" : 3, "customerId" : CSUUID("88355105-be3d-5eeb-d56f-bff820879978") }{ "totalTermine" : 3, "customerId" : CSUUID("1169bfb3-8a8f-d6b2-87ec-16f7d52d9b20") }{ "totalTermine" : 3, "customerId" : CSUUID("b189de4b-4d48-43d5-d410-2b5533a0b2e3") }{ "totalTermine" : 3, "customerId" : CSUUID("fdf4c267-716c-29d6-97e7-d7b98df41f72") }{ "totalTermine" : 3, "customerId" : CSUUID("d75e999b-1a03-ace6-9ffe-e7d81718fb9a") }{ "totalTermine" : 3, "customerId" : CSUUID("b66b4720-4e6c-8750-f488-fd18a48fd363") }{ "totalTermine" : 3, "customerId" : CSUUID("402b646f-cddf-9000-4ea8-7e2723d14672") }
+-------------------------------
+
+Log Entry : 12:56:53 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 12:56:53 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.03.32
+-------------------------------
+
+Log Entry : 12:56:53 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "totalTermine" : 80, "customerId" : null }
+-------------------------------
+
+Log Entry : 13:00:12 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 13:00:12 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.02.23
+-------------------------------
+
+Log Entry : 13:00:12 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "totalTermine" : 100, "customerId" : null }
+-------------------------------
+
+Log Entry : 13:00:40 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation - How much termins has every Customer:
+-------------------------------
+
+Log Entry : 13:00:40 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation: Find Termin (hh:mm:ss:ms:ns):00:00:00.02.24
+-------------------------------
+
+Log Entry : 13:00:40 Freitag, 22. Dezember 2023
+  :
+  :Mongo Aggregation Result{ "totalTermine" : 6, "customerId" : ("32ebf813-a251-2efb-6ae8-d18feab14f2a") }{ "totalTermine" : 6, "customerId" : ("c6dd0bda-11f6-b510-7f2f-9ed10ed3f40a") }{ "totalTermine" : 6, "customerId" : ("aa52f637-9430-4d26-f8d8-0d8f2eb85eeb") }{ "totalTermine" : 18, "customerId" : ("1e86fefb-305f-dd4f-cf4a-4dec49ff72ef") }{ "totalTermine" : 6, "customerId" : ("09ed1bfc-7d49-13ea-a281-1c68f086a30b") }{ "totalTermine" : 6, "customerId" : ("01ad2905-f1a8-d16e-bda7-1ed4878ba394") }{ "totalTermine" : 6, "customerId" : ("fa3cd603-26e9-e4a7-7fd3-ab13edb8ae54") }{ "totalTermine" : 6, "customerId" : ("5691d9cf-adde-b816-e9c1-15ffdc86ebab") }{ "totalTermine" : 6, "customerId" : ("4092f1b1-cd00-2ab6-b17d-d0ae74be2044") }{ "totalTermine" : 6, "customerId" : ("ca44b26e-6121-a3ed-2d4d-597970e7cbae") }{ "totalTermine" : 6, "customerId" : ("d75e999b-1a03-ace6-9ffe-e7d81718fb9a") }{ "totalTermine" : 6, "customerId" : ("fdf4c267-716c-29d6-97e7-d7b98df41f72") }{ "totalTermine" : 6, "customerId" : ("b189de4b-4d48-43d5-d410-2b5533a0b2e3") }{ "totalTermine" : 6, "customerId" : ("b66b4720-4e6c-8750-f488-fd18a48fd363") }{ "totalTermine" : 6, "customerId" : ("88355105-be3d-5eeb-d56f-bff820879978") }{ "totalTermine" : 6, "customerId" : ("e3c35215-70dc-269c-712b-0854fce83f59") }{ "totalTermine" : 6, "customerId" : ("1169bfb3-8a8f-d6b2-87ec-16f7d52d9b20") }{ "totalTermine" : 6, "customerId" : ("402b646f-cddf-9000-4ea8-7e2723d14672") }
 -------------------------------
